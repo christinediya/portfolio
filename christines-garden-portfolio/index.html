@@ -1,0 +1,912 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="description" content="Christine Gomes: marketing coordinator and designer. An interactive portfolio garden.">
+<title>Christine's Garden</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Caprasimo&family=Mansalva&family=Karla:ital,wght@0,400;0,500;0,700;1,400&family=Kalam:wght@400;700&family=Homemade+Apple&display=swap">
+</head>
+<body>
+<style>
+/* Layout: a portfolio bound like a book of hand-pulled prints.
+   Plate I (hero) is a yellow screenprint of the giant mango tree with Christine reaching up under it = projects.
+   Plate II deep-green orange grove = experience. Plate III periwinkle cherry vine = skills.
+   Plate IV pink-and-grey vintage lemon tree = about. Colophon: a botanical mango study on parchment = contact.
+   Single committed print look; no outlines, flat inks, grain and speckle everywhere. */
+:root{
+  color-scheme:light;
+  --paper:#EFE5D0;
+  --paper-2:#F6EEDC;
+  --ink:#1E3A26;       /* forest ink, used for type */
+  --ink-soft:#4E5E4F;
+  --verm:#D9472B;      /* vermilion */
+  --mustard:#F2C335;
+  --mango:#F2A22C;
+  --orange:#EC7A22;
+  --cherry:#C8223A;
+  --lemon:#E9C531;
+  --teal:#47B3BF;
+  --peri:#A9B3E6;
+  --grove:#1F5B45;
+  --blush:#E9C1B4;
+  --display:"Caprasimo","Cooper Black","Georgia",serif;
+  --body:"Karla","Avenir Next","Segoe UI",system-ui,sans-serif;
+  --hand:"Kalam","Bradley Hand","Segoe Print",cursive;
+  --sig:"Homemade Apple","Brush Script MT",cursive;
+  --brush:"Mansalva","Caprasimo","Brush Script MT",cursive;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:smooth}
+body{margin:0;background:var(--paper);color:var(--ink);font-family:var(--body);font-size:17px;line-height:1.6;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+button{font:inherit;color:inherit}
+:focus-visible{outline:3px dashed var(--verm);outline-offset:4px}
+.wrap{max-width:1240px;margin:0 auto;padding-left:max(16px,env(safe-area-inset-left,0px));padding-right:max(16px,env(safe-area-inset-right,0px))}
+h1,h2,h3{font-family:var(--display);font-weight:400;margin:0;line-height:1;text-wrap:balance}
+.grain{position:fixed;inset:0;pointer-events:none;z-index:80;opacity:.2;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='240' height='240'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.8' numOctaves='2' stitchTiles='stitch'/><feColorMatrix values='0 0 0 0 .25  0 0 0 0 .2  0 0 0 0 .12  0 0 0 .5 0'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+/* hand-cut shapes */
+.cut{border-radius:255px 18px 225px 16px/16px 225px 18px 255px}
+
+/* ---------- Nav ---------- */
+nav.top{position:absolute;left:0;right:0;top:0;z-index:20}
+nav.top .wrap{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-block:18px;flex-wrap:wrap}
+.sig{font-family:var(--sig);font-size:20px;color:var(--ink);text-decoration:none;line-height:1.2;padding-top:6px}
+nav.top ul{list-style:none;margin:0;padding:0;display:flex;gap:4px 18px;flex-wrap:wrap}
+nav.top a.nl{text-decoration:none;color:var(--ink);font-weight:700;font-size:13px;letter-spacing:.14em;text-transform:uppercase;display:flex;align-items:center;gap:7px;padding:4px 0;background:linear-gradient(var(--ink),var(--ink)) 0 100%/0 2px no-repeat;transition:background-size .3s}
+nav.top a.nl:hover{background-size:100% 2px}
+nav.top a.nl i{width:10px;height:10px;border-radius:50% 50% 50% 10%;display:block}
+
+/* ---------- Plate I: hero ---------- */
+.hero{position:relative;background:var(--mustard);overflow:hidden;padding-top:70px}
+.hero__bg{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;will-change:transform}
+.hero__grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,.82fr) minmax(0,1.18fr);gap:8px;align-items:end}
+.hero__copy{align-self:center;padding-block:30px 140px}
+.plate-no{font-size:12px;letter-spacing:.22em;text-transform:uppercase;font-weight:700;color:var(--ink)}
+.hero h1{font-family:var(--brush);font-size:clamp(66px,9.6vw,138px);line-height:.92;margin-top:16px;color:var(--ink);letter-spacing:.005em;filter:url(#printSoft);rotate:-1.5deg}
+.hero h1 em{display:inline-block;rotate:2deg}
+.hero h1 em{font-style:normal;color:var(--verm)}
+.hero .lede{max-width:46ch;font-size:14.5px;line-height:1.6;margin:34px 0 0;color:var(--ink)}
+.fineprint{position:absolute;z-index:4;top:76px;right:max(16px,env(safe-area-inset-right,0px));margin:0;max-width:46ch;text-align:right;font-size:10.5px;line-height:1.5;letter-spacing:.05em;color:var(--ink);opacity:.7;transition:opacity .2s}
+.fineprint b{font-weight:700;letter-spacing:.16em;text-transform:uppercase;font-size:9.5px;color:var(--verm);margin-right:4px}
+.fineprint:hover{opacity:1}
+.hbasket{position:absolute;left:30%;bottom:2%;width:17%;z-index:6;pointer-events:none}
+.hbasket svg{width:100%;height:auto;display:block;overflow:visible}
+.hbasket .count{display:block;text-align:center;font-family:var(--hand);font-size:clamp(13px,1.3vw,18px);line-height:1;color:#F6EEDC;text-shadow:0 1px 2px rgba(0,0,0,.4);margin-top:2px;white-space:nowrap}
+.hbasket.bump svg{animation:bump .45s}
+.basket{transition:transform .35s cubic-bezier(.3,1.4,.5,1),opacity .25s}
+.basket.away{transform:translateY(140%);opacity:0;pointer-events:none}
+.butterfly{will-change:transform;position:absolute;width:30px;height:24px;z-index:3;pointer-events:none;animation:flit 22s ease-in-out infinite}
+.butterfly svg{width:100%;height:100%;animation:flap .28s ease-in-out infinite alternate;transform-origin:50% 50%}
+@keyframes flap{to{transform:scaleX(.35)}}
+@keyframes flit{0%{transform:translate(0,0) rotate(8deg)}25%{transform:translate(60px,-40px) rotate(-10deg)}50%{transform:translate(120px,10px) rotate(12deg)}75%{transform:translate(40px,50px) rotate(-6deg)}100%{transform:translate(0,0) rotate(8deg)}}
+
+/* ---------- Trees & fruit ---------- */
+.tree{position:relative;width:100%;aspect-ratio:600/640}
+.tree>svg.art{position:absolute;inset:0;width:100%;height:100%;overflow:visible;will-change:transform;transform-origin:50% 100%}
+.sway{transform-box:fill-box;transform-origin:50% 100%}
+.tree.rustle>svg.art{animation:rustle .7s ease-in-out}
+@keyframes rustle{25%{transform:rotate(.6deg)}60%{transform:rotate(-.4deg)}}
+.fruit{will-change:transform,rotate;position:absolute;translate:-50% 0;transform-origin:50% 0;border:0;background:none;padding:0;cursor:pointer;z-index:4;display:flex;flex-direction:column;align-items:center;-webkit-tap-highlight-color:transparent}
+.fruit svg{width:100%;height:auto;display:block;overflow:visible;transition:scale .25s}
+.fruit:hover svg,.fruit:focus-visible svg{scale:1.07}
+.fruit:hover:not(.picked),.fruit:focus-visible:not(.picked){animation:shake .65s ease-in-out infinite}
+@keyframes shake{0%,100%{rotate:0deg}20%{rotate:10deg}45%{rotate:-8deg}70%{rotate:5deg}85%{rotate:-2deg}}
+.tag{margin-top:2px;white-space:nowrap;font-family:var(--hand);font-size:clamp(12px,1.3vw,17px);line-height:1;color:var(--label,var(--ink));transition:opacity .2s;rotate:-3deg}
+.fruit.picked .tag{opacity:0}
+.fruit.picked{z-index:5}
+.fruit.regrow svg{animation:grow .8s cubic-bezier(.3,1.5,.5,1)}
+@keyframes grow{from{scale:0}}
+.leaf-fall{position:absolute;width:18px;height:9px;border-radius:0 100% 0 100%;pointer-events:none;z-index:3;animation:leaf 1.8s ease-in forwards}
+@keyframes leaf{to{transform:translate(var(--lx),170px) rotate(300deg);opacity:0}}
+
+/* Christine */
+.girl{position:absolute;left:13%;bottom:3%;width:18%;z-index:6;cursor:pointer;border:0;background:none;padding:0}
+.girl svg{width:100%;height:auto;display:block;overflow:visible}
+.girl.hop{animation:hop .55s cubic-bezier(.3,1.5,.5,1)}
+@keyframes hop{40%{transform:translateY(-12%)}}
+.girl .arms{transform-box:fill-box;transform-origin:50% 100%;animation:reach 2.6s ease-in-out infinite}
+@keyframes reach{50%{transform:translateY(-3px) rotate(-2deg)}}
+.bubble{position:absolute;left:33%;bottom:17%;z-index:7;max-width:200px;background:var(--paper-2);color:var(--ink);padding:10px 14px;font-family:var(--hand);font-size:18px;line-height:1.2;transform-origin:0 100%;transition:transform .3s cubic-bezier(.3,1.5,.5,1),opacity .2s;box-shadow:3px 4px 0 rgba(30,58,38,.25)}
+.bubble::after{content:"";position:absolute;left:-10px;bottom:10px;border:8px solid transparent;border-right-color:var(--paper-2)}
+.bubble.hide{transform:scale(.4);opacity:0;pointer-events:none}
+
+/* ---------- Plates ---------- */
+.plate{padding-block:56px 8px}
+.print{position:relative;background:var(--bg);color:var(--fg);padding:clamp(18px,3vw,40px);overflow:hidden;box-shadow:0 1px 0 rgba(0,0,0,.05),0 30px 50px -40px rgba(40,30,10,.6)}
+.print__grid{position:relative;z-index:2;display:grid;grid-template-columns:minmax(0,1.1fr) minmax(0,.9fr);gap:clamp(16px,3vw,40px);align-items:center}
+.plate.flip .tree-col{order:2}
+.print__bgart{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;z-index:1}
+.caption{max-width:480px;width:100%;justify-self:center}
+.packet{position:relative;background:var(--paper-2);color:#2E2A24;rotate:-1.6deg;box-shadow:8px 10px 0 rgba(0,0,0,.18);transition:rotate .4s cubic-bezier(.3,1.5,.5,1)}
+.plate.flip .packet{rotate:1.4deg}
+.packet:hover,.plate.flip .packet:hover{rotate:0deg}
+.packet__crimp{position:absolute;left:0;right:0;top:-9px;height:10px;background:var(--band);
+  -webkit-mask:conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50%/14px 100%;mask:conic-gradient(from 135deg at top,#0000,#000 1deg 89deg,#0000 90deg) 50%/14px 100%}
+.packet__band{position:relative;background:var(--band);color:var(--bandfg);padding:20px 22px 22px;display:grid;grid-template-columns:minmax(0,1fr) 96px;gap:12px;align-items:center;overflow:hidden}
+.packet__band::after{content:"";position:absolute;inset:0;background-image:radial-gradient(rgba(255,255,255,.22) 1.2px,transparent 1.6px);background-size:9px 9px;pointer-events:none}
+.packet__stamp{display:inline-block;font-family:var(--hand);font-size:17px;line-height:1.2;padding:2px 10px;border:1.5px dashed currentColor;rotate:-3deg}
+.packet h2{font-size:clamp(38px,4.8vw,60px);margin-top:12px;color:var(--bandfg)}
+.packet .latin{font-style:italic;margin-top:6px;font-size:17px;opacity:.95}
+.packet__art{position:relative;z-index:1;width:96px;rotate:12deg;filter:drop-shadow(3px 4px 0 rgba(0,0,0,.18))}
+.packet__art svg{width:100%;height:auto;display:block;overflow:visible}
+.packet__body{padding:18px 22px 16px}
+.facts{margin:0 0 14px;padding:0;display:grid;gap:3px}
+.facts div{display:flex;align-items:baseline;gap:8px;font-size:15px}
+.facts dt{text-transform:uppercase;letter-spacing:.14em;font-size:11.5px;font-weight:700;opacity:.75;flex:none}
+.facts .dots{flex:1;border-bottom:2px dotted currentColor;opacity:.35;transform:translateY(-4px);min-width:16px}
+.facts dd{margin:0;font-weight:700;flex:none}
+.packet p{margin:0 0 14px}
+.sow{font-family:var(--hand);font-size:18px;line-height:1.3;margin:0 0 14px;padding:10px 12px;background:color-mix(in srgb,var(--band) 14%,transparent);border-left:4px solid var(--band)}
+.contents{font-size:11.5px;letter-spacing:.18em;text-transform:uppercase;font-weight:700;opacity:.75;margin:0 0 8px}
+.picklist{display:flex;flex-wrap:wrap;gap:8px}
+.picklist button{border:1.5px solid #2E2A24;background:transparent;color:#2E2A24;padding:5px 12px 5px 8px;font-weight:700;font-size:14px;cursor:pointer;display:flex;align-items:center;gap:7px;transition:transform .15s,background .15s}
+.picklist button:hover{transform:translateY(-2px) rotate(-1deg);background:color-mix(in srgb,var(--band) 25%,transparent)}
+.picklist button i{width:10px;height:10px;border-radius:50% 50% 50% 10%;background:var(--band);display:block}
+.picklist button.done{opacity:.55;text-decoration:line-through}
+.packet__foot{display:flex;justify-content:space-between;align-items:flex-end;gap:10px;margin-top:16px;padding-top:10px;border-top:1.5px dashed rgba(46,42,36,.35);font-size:11px;letter-spacing:.12em;text-transform:uppercase;font-weight:700;opacity:.8;flex-wrap:wrap}
+.bars{display:flex;gap:1.5px;height:24px;align-items:flex-end}
+.bars i{display:block;background:#2E2A24;height:100%}
+
+/* ---------- Colophon / contact ---------- */
+.colophon{padding-block:56px 40px}
+.parch{background:#E9DCC0;color:#3A2A1E;padding:clamp(20px,4vw,52px);display:grid;grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr);gap:clamp(16px,4vw,48px);align-items:center;position:relative;overflow:hidden}
+.parch svg.study{width:100%;height:auto;display:block}
+.parch .plate-no{color:#6B5340}
+.parch h2{font-size:clamp(40px,5.2vw,68px);margin-top:10px;color:#3A2A1E}
+.parch h2 em{font-style:normal;color:var(--verm)}
+.parch p.lead{max-width:44ch;margin:14px 0 22px}
+.entries{display:grid;gap:12px;max-width:520px}
+.entry{display:flex;justify-content:space-between;align-items:center;gap:12px;padding-bottom:10px;border-bottom:1.5px solid #3A2A1E33;min-width:0}
+.entry span{min-width:0;overflow-wrap:anywhere;font-size:17px;font-weight:500}
+.entry small{display:block;font-family:var(--hand);font-size:16px;color:#6B5340;line-height:1.1}
+.entry a,.entry button{flex:none;border:0;background:#3A2A1E;color:#E9DCC0;padding:7px 15px;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.signoff{font-family:var(--sig);font-size:24px;margin-top:26px;color:#3A2A1E}
+footer{text-align:center;padding:6px 16px 120px;font-family:var(--sig);font-size:17px;line-height:1.9;color:var(--ink)}
+
+/* ---------- Basket ---------- */
+.basket{position:fixed;right:max(16px,env(safe-area-inset-right,0px));bottom:calc(16px + env(safe-area-inset-bottom,0px));z-index:30;display:flex;align-items:center;gap:10px;background:var(--paper-2);padding:8px 14px 8px 8px;box-shadow:3px 4px 0 rgba(30,58,38,.3)}
+.basket svg{width:56px;height:46px}
+.basket b{font-family:var(--display);font-weight:400;font-size:22px;display:block;line-height:1}
+.basket small{font-size:12px;color:var(--ink-soft);font-weight:700;letter-spacing:.06em;text-transform:uppercase}
+.basket button{border:0;background:var(--ink);color:var(--paper);padding:5px 11px;font-size:12px;font-weight:700;cursor:pointer}
+.basket.bump{animation:bump .45s}
+@keyframes bump{40%{transform:scale(1.1) rotate(-3deg)}}
+
+/* ---------- Card ---------- */
+dialog.splash{border:0;padding:0;background:transparent;max-width:min(640px,calc(100vw - 32px));width:100%;overflow:visible;color:var(--ink)}
+dialog.splash::backdrop{background:rgba(30,40,25,.5)}
+.card{--c:var(--mango);position:relative;background:var(--paper-2);max-height:min(84vh,780px);overflow:auto;box-shadow:0 30px 60px -20px rgba(20,30,15,.6)}
+dialog.splash.in .card{animation:splashIn .6s cubic-bezier(.25,1.45,.45,1)}
+@keyframes splashIn{0%{transform:scale(.06) rotate(-14deg);opacity:.4}60%{transform:scale(1.03) rotate(.8deg);opacity:1}100%{transform:none}}
+.card__head{position:relative;padding:30px 26px 18px;display:grid;grid-template-columns:120px minmax(0,1fr);gap:18px;align-items:center}
+.card__blob{position:absolute;left:-30px;top:-40px;width:250px;height:250px;pointer-events:none}
+.card__cut{position:relative;width:120px;height:120px}
+.card__cut svg{width:100%;height:100%;display:block;overflow:visible}
+dialog.splash.in .card__cut svg{animation:pop .7s cubic-bezier(.3,1.6,.5,1) .15s both}
+@keyframes pop{from{transform:scale(.3) rotate(-30deg)}}
+.plu{font-size:11px;letter-spacing:.2em;font-weight:700;text-transform:uppercase;color:var(--ink-soft)}
+.card h3{font-size:clamp(30px,5vw,42px);margin-top:6px;color:var(--ink)}
+.card__sub{font-weight:500;margin-top:6px;color:var(--ink-soft)}
+.card__body{padding:4px 26px 22px;display:flex;flex-direction:column;gap:18px;position:relative}
+.meta{display:flex;flex-wrap:wrap;gap:6px 14px;font-family:var(--hand);font-size:17px;color:var(--ink-soft)}
+.meta span::before{content:"✿ ";color:var(--c)}
+.card h4{font-size:12px;letter-spacing:.2em;text-transform:uppercase;margin:0 0 6px;color:var(--c);filter:brightness(.8)}
+.card p,.card ul{margin:0}
+.card ul{padding-left:20px}
+.card li{margin-bottom:5px}
+.card li::marker{color:var(--c)}
+.chips{display:flex;flex-wrap:wrap;gap:8px}
+.chips span{font-weight:700;font-size:14px;padding:6px 13px;background:color-mix(in srgb,var(--c) 26%,var(--paper-2))}
+.card__link{display:flex;justify-content:space-between;align-items:center;gap:12px;text-decoration:none;color:var(--ink);background:color-mix(in srgb,var(--c) 32%,var(--paper-2));padding:14px 18px;font-family:var(--display);font-size:20px;line-height:1.15;transition:transform .2s cubic-bezier(.3,1.5,.5,1)}
+.card__link b{font-family:var(--body);font-size:22px}
+.card__link:hover{transform:translateY(-2px) rotate(-.5deg)}
+.card__foot{display:flex;justify-content:space-between;gap:10px;flex-wrap:wrap;padding:0 26px 26px}
+.btn{border:0;background:transparent;padding:10px 18px;font-weight:700;cursor:pointer;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink);transition:transform .15s}
+.btn:hover{transform:translateY(-2px) rotate(-.6deg)}
+.btn--go{background:var(--ink);color:var(--paper-2);box-shadow:none}
+.x{position:absolute;top:12px;right:12px;width:40px;height:40px;border:0;background:var(--ink);color:var(--paper-2);font-size:22px;line-height:1;cursor:pointer;z-index:3;border-radius:50%}
+
+/* ---------- In a hurry? ---------- */
+.tldr{display:block;margin-top:16px;width:140px;height:140px;padding:0;border:0;background:none;cursor:pointer;border-radius:50%;transition:transform .3s cubic-bezier(.3,1.5,.5,1)}
+.tldr svg{width:100%;height:100%;display:block;overflow:visible}
+.tldr .disc{fill:#F6EEDC;filter:drop-shadow(3px 4px 0 rgba(30,58,38,.22))}
+.tldr .inner{fill:none;stroke:#1E3A26;stroke-width:1;stroke-dasharray:2 3;opacity:.45}
+.tldr text{font-family:var(--body);font-weight:700;font-size:14px;letter-spacing:.14em;fill:#1E3A26}
+.tldr text.hot{fill:var(--verm)}
+.tldr .hot{fill:var(--verm)}
+.tldr .ring{transform-origin:60px 60px}
+.tldr .crop{filter:hue-rotate(55deg) saturate(.75);transition:filter .5s ease}
+.tldr:hover,.tldr:focus-visible{transform:scale(1.06) rotate(-3deg)}
+.tldr:hover .crop,.tldr:focus-visible .crop{filter:none}
+.tldr:hover .ring,.tldr:focus-visible .ring{animation:ringspin 9s linear infinite}
+@keyframes ringspin{to{transform:rotate(360deg)}}
+@media (prefers-reduced-motion:reduce){.tldr:hover .ring,.tldr:focus-visible .ring{animation:none}.tldr .crop{transition:none}}
+nav.top .nl-hurry{border:0;background:var(--ink);color:var(--paper-2);font:inherit;font-weight:700;font-size:12px;letter-spacing:.14em;text-transform:uppercase;padding:5px 11px;cursor:pointer}
+nav.top .nl-hurry:hover{background:var(--verm)}
+dialog.hurry{border:0;padding:0;background:transparent;width:100%;max-width:min(920px,calc(100vw - 32px));color:var(--ink)}
+dialog.hurry::backdrop{background:rgba(30,40,25,.55)}
+.sheet{position:relative;background:var(--paper-2);max-height:min(88vh,900px);overflow:auto;padding:clamp(20px,3.4vw,40px);box-shadow:0 30px 60px -20px rgba(20,30,15,.6)}
+dialog.hurry[open] .sheet{animation:sheetIn .45s cubic-bezier(.25,1.3,.45,1)}
+@keyframes sheetIn{from{transform:translateY(24px) rotate(-1deg);opacity:0}}
+.sheet .kick{font-size:11px;letter-spacing:.2em;text-transform:uppercase;font-weight:700;color:var(--verm)}
+.sheet h2{font-family:var(--sig);font-size:clamp(26px,3.6vw,34px);line-height:1.7;margin-top:2px;color:var(--ink)}
+.sheet .who{margin:2px 0 0;font-size:14.5px;line-height:1.5;max-width:70ch;color:var(--ink-soft)}
+.sheet .stats{display:grid;grid-template-columns:repeat(3,minmax(0,1fr));gap:8px;margin:16px 0 2px}
+.sheet .stat{background:color-mix(in srgb,var(--mustard) 22%,var(--paper-2));padding:9px 12px}
+.sheet .stat b{display:block;font-family:var(--display);font-weight:400;font-size:22px;line-height:1}
+.sheet .stat span{font-size:12px;line-height:1.3;display:block;margin-top:3px;color:var(--ink-soft)}
+.sheet .cols{display:grid;grid-template-columns:minmax(0,1fr) minmax(0,1fr);gap:4px 36px;margin-top:10px}
+.sheet h3{font-size:10.5px;letter-spacing:.2em;text-transform:uppercase;font-family:var(--body);font-weight:700;color:var(--ink-soft);margin:18px 0 8px;padding-bottom:6px;border-bottom:2px dotted rgba(30,58,38,.3)}
+.sheet ul{list-style:none;margin:0;padding:0;display:grid;gap:6px}
+.sheet li{line-height:1.3;font-size:13.5px}
+.sheet li strong{font-weight:700}
+.sheet li small{display:block;font-size:12px;color:var(--ink-soft);margin-top:1px}
+.sheet li a{color:var(--ink);font-weight:700;text-decoration-color:var(--verm);text-decoration-thickness:2px;text-underline-offset:3px}
+.sheet .tags{display:flex;flex-wrap:wrap;gap:6px}
+.sheet .tags span{font-size:12px;font-weight:700;padding:3px 9px;background:color-mix(in srgb,var(--peri) 40%,var(--paper-2))}
+.sheet .reach{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px;padding-top:14px;border-top:2px dotted rgba(30,58,38,.3);align-items:center}
+.sheet .reach .addr{font-weight:700;font-size:14px}
+.sheet .reach button,.sheet .reach a{border:0;background:var(--ink);color:var(--paper-2);padding:8px 14px;font-weight:700;font-size:13px;letter-spacing:.06em;text-transform:uppercase;cursor:pointer;text-decoration:none}
+.sheet .reach .back{background:transparent;color:var(--ink);box-shadow:inset 0 0 0 2px var(--ink);margin-left:auto}
+@media (max-width:700px){.sheet .cols{grid-template-columns:1fr}.sheet .stats{grid-template-columns:1fr}.sheet .reach .back{margin-left:0}}
+@media (prefers-reduced-motion:reduce){dialog.hurry[open] .sheet{animation:none}}
+#juice{position:fixed;inset:0;width:100%;height:100%;pointer-events:none;z-index:60}
+.toast{position:fixed;left:50%;top:calc(18px + env(safe-area-inset-top,0px));transform:translate(-50%,-20px);opacity:0;z-index:70;background:var(--ink);color:var(--paper-2);padding:9px 18px;font-weight:700;transition:.25s;pointer-events:none}
+.toast.show{transform:translate(-50%,0);opacity:1}
+
+@media (max-width:900px){
+  .fineprint{position:static;display:block;text-align:left;max-width:none;margin:0;padding:22px max(16px,env(safe-area-inset-left,0px)) 0}
+  .hero__grid{grid-template-columns:1fr}
+  .hero__copy{padding-block:24px 0}
+  .print__grid{grid-template-columns:1fr}
+  .plate.flip .tree-col{order:0}
+  .parch{grid-template-columns:1fr}
+  .parch svg.study{max-width:260px;margin:0 auto}
+}
+@media (max-width:560px){
+  .hero{padding-top:104px}
+  .girl{width:22%;left:8%}
+  nav.top ul{gap:2px 12px}
+  nav.top a.nl{font-size:11px;letter-spacing:.1em}
+  .tag{font-size:11px}
+  .bubble{font-size:15px;max-width:150px;left:30%;bottom:17%}
+  .hbasket{width:21%;left:30%}
+  .card__head{grid-template-columns:84px minmax(0,1fr);padding:26px 18px 14px}
+  .card__cut{width:84px;height:84px}
+  .card__body{padding:4px 18px 18px}.card__foot{padding:0 18px 20px}
+  .basket svg{width:42px;height:36px}
+}
+@media (prefers-reduced-motion:reduce){
+  .butterfly,.butterfly svg,.girl .arms{animation:none}
+  .fruit:hover:not(.picked),.fruit:focus-visible:not(.picked){animation:none}
+  dialog.splash.in .card,dialog.splash.in .card__cut svg{animation:none}
+}
+</style>
+
+<!-- Print filters, gradients and fruit artwork shared by the whole page -->
+<svg width="0" height="0" style="position:absolute" aria-hidden="true">
+  <defs>
+    <!-- worn screenprint: wobbly edges + pale specks -->
+    <filter id="print" x="-8%" y="-8%" width="116%" height="116%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.028" numOctaves="2" seed="4" result="w"/>
+      <feDisplacementMap in="SourceGraphic" in2="w" scale="12" xChannelSelector="R" yChannelSelector="G" result="r"/>
+      <feTurbulence type="fractalNoise" baseFrequency="0.85" numOctaves="1" seed="2" result="f"/>
+      <feColorMatrix in="f" type="matrix" values="0 0 0 0 1  0 0 0 0 .97  0 0 0 0 .85  0 0 0 -16 5.5" result="s"/>
+      <feComposite in="s" in2="r" operator="in" result="si"/>
+      <feMerge><feMergeNode in="r"/><feMergeNode in="si"/></feMerge>
+    </filter>
+    <!-- gentler version for small things -->
+    <filter id="printSoft" x="-10%" y="-10%" width="120%" height="120%">
+      <feTurbulence type="fractalNoise" baseFrequency="0.06" numOctaves="2" seed="8" result="w"/>
+      <feDisplacementMap in="SourceGraphic" in2="w" scale="3" xChannelSelector="R" yChannelSelector="G" result="r"/>
+      <feTurbulence type="fractalNoise" baseFrequency="1.2" numOctaves="1" seed="5" result="f"/>
+      <feColorMatrix in="f" type="matrix" values="0 0 0 0 1  0 0 0 0 .95  0 0 0 0 .8  0 0 0 -13 4.6" result="s"/>
+      <feComposite in="s" in2="r" operator="in" result="si"/>
+      <feMerge><feMergeNode in="r"/><feMergeNode in="si"/></feMerge>
+    </filter>
+    <filter id="airbrush" x="-20%" y="-20%" width="140%" height="140%"><feGaussianBlur stdDeviation="1.6"/></filter>
+
+    <radialGradient id="gMango" cx="42%" cy="34%" r="70%"><stop offset="0" stop-color="#FFE27A"/><stop offset=".42" stop-color="#F8B532"/><stop offset=".8" stop-color="#F07A2A"/><stop offset="1" stop-color="#DE4B2A"/></radialGradient>
+    <radialGradient id="gOrange" cx="40%" cy="36%" r="70%"><stop offset="0" stop-color="#FFC163"/><stop offset=".55" stop-color="#F08425"/><stop offset="1" stop-color="#D2541A"/></radialGradient>
+    <radialGradient id="gCherry" cx="38%" cy="34%" r="72%"><stop offset="0" stop-color="#FF9A4A"/><stop offset=".45" stop-color="#F0452E"/><stop offset="1" stop-color="#B9162E"/></radialGradient>
+    <radialGradient id="gLemon" cx="40%" cy="36%" r="70%"><stop offset="0" stop-color="#FFF4A0"/><stop offset=".55" stop-color="#F2D33A"/><stop offset="1" stop-color="#D9AC1E"/></radialGradient>
+
+    <g id="fx-mango" filter="url(#printSoft)">
+      <path d="M30 3 C31 7 31 10 30 13" stroke="#5B3A22" stroke-width="3" stroke-linecap="round" fill="none"/>
+      <path d="M31 9 C38 1 50 1 56 6 C49 13 38 14 31 9Z" fill="#5E8F3A"/>
+      <path d="M30 12 C46 11 56 26 53 44 C50 61 33 69 21 61 C8 52 7 28 16 17 C20 13 25 12 30 12Z" fill="url(#gMango)"/>
+      <ellipse cx="22" cy="27" rx="5" ry="8" fill="#FFF3C0" opacity=".45" transform="rotate(20 22 27)" filter="url(#airbrush)"/>
+    </g>
+    <g id="fx-orange" filter="url(#printSoft)">
+      <path d="M30 3 V15" stroke="#5B3A22" stroke-width="3" stroke-linecap="round"/>
+      <path d="M31 10 C38 2 50 2 55 7 C48 14 37 15 31 10Z" fill="#3E7A4A"/>
+      <circle cx="30" cy="41" r="24" fill="url(#gOrange)"/>
+      <ellipse cx="22" cy="32" rx="5" ry="7" fill="#FFE2A6" opacity=".45" transform="rotate(25 22 32)" filter="url(#airbrush)"/>
+    </g>
+    <g id="fx-cherry" filter="url(#printSoft)">
+      <path d="M32 2 C29 18 21 30 19 40 M32 2 C36 18 42 30 43 43" fill="none" stroke="#7A4A2B" stroke-width="2.4" stroke-linecap="round"/>
+      <path d="M33 4 C41 -3 52 0 55 5 C48 11 39 11 33 4Z" fill="#6E8E3E"/>
+      <circle cx="19" cy="51" r="13.5" fill="url(#gCherry)"/>
+      <circle cx="43" cy="54" r="13.5" fill="url(#gCherry)"/>
+      <ellipse cx="14" cy="46" rx="3" ry="4.5" fill="#FFD2A0" opacity=".45" filter="url(#airbrush)"/><ellipse cx="38" cy="49" rx="3" ry="4.5" fill="#FFD2A0" opacity=".45" filter="url(#airbrush)"/>
+    </g>
+    <g id="fx-lemon" filter="url(#printSoft)">
+      <path d="M30 3 V13" stroke="#5B3A22" stroke-width="3" stroke-linecap="round"/>
+      <path d="M31 9 C39 1 51 2 55 7 C47 13 37 14 31 9Z" fill="#6A8A55"/>
+      <path d="M30 12 C33 12 35 14 36 16 C48 19 55 31 54 43 C53 56 42 63 33 64 C32 67 28 67 27 64 C18 63 7 56 6 43 C5 31 12 19 24 16 C25 14 27 12 30 12Z" fill="url(#gLemon)"/>
+      <ellipse cx="20" cy="31" rx="4.5" ry="8" fill="#FFFBD8" opacity=".5" transform="rotate(25 20 31)" filter="url(#airbrush)"/>
+    </g>
+
+    <!-- fruit cut open, for the cards -->
+    <g id="cut-mango" filter="url(#printSoft)">
+      <path d="M50 6 C78 6 94 32 90 60 C86 86 60 98 40 92 C16 85 6 60 12 36 C16 18 32 6 50 6Z" fill="#E8682A"/>
+      <path d="M50 13 C73 13 86 35 83 59 C80 81 59 91 42 86 C22 80 13 59 18 39 C22 23 35 13 50 13Z" fill="#FBB733"/>
+      <path d="M50 22 C64 22 72 38 70 56 C68 72 56 80 46 77 C34 73 29 58 32 44 C35 31 42 22 50 22Z" fill="#F4E2A8"/>
+      <g stroke="#E9C66A" stroke-width="1.2" opacity=".8"><path d="M42 32 L60 70"/><path d="M38 44 L58 76"/><path d="M48 26 L66 62"/></g>
+    </g>
+    <g id="cut-orange" filter="url(#printSoft)">
+      <circle cx="50" cy="50" r="44" fill="#E8701F"/><circle cx="50" cy="50" r="38" fill="#FBE5C2"/>
+      <g fill="#F49A2E" id="seg-o"></g>
+      <circle cx="50" cy="50" r="4" fill="#FBE5C2"/>
+    </g>
+    <g id="cut-cherry" filter="url(#printSoft)">
+      <path d="M52 4 C50 14 47 20 46 26" stroke="#7A4A2B" stroke-width="3" fill="none" stroke-linecap="round"/>
+      <circle cx="50" cy="58" r="38" fill="#B9162E"/><circle cx="50" cy="58" r="32" fill="#E0413A"/>
+      <ellipse cx="50" cy="58" rx="11" ry="14" fill="#F3D9B0"/>
+    </g>
+    <g id="cut-lemon" filter="url(#printSoft)">
+      <circle cx="50" cy="50" r="44" fill="#E2B826"/><circle cx="50" cy="50" r="38" fill="#FFF6CF"/>
+      <g fill="#F6DD55" id="seg-l"></g>
+      <circle cx="50" cy="50" r="4" fill="#FFF6CF"/>
+    </g>
+  </defs>
+</svg>
+
+<div class="grain" aria-hidden="true"></div>
+
+<nav class="top"><div class="wrap">
+  <a class="sig" href="#top">Christine Gomes</a>
+  <ul>
+    <li><a class="nl" href="#mango"><i style="background:#4F9A35"></i>Projects</a></li>
+    <li><a class="nl" href="#oranges"><i style="background:#E0601C"></i>Experience</a></li>
+    <li><a class="nl" href="#cherries"><i style="background:#A9B3E6"></i>Skills</a></li>
+    <li><a class="nl" href="#lemons"><i style="background:#E4889A"></i>About</a></li>
+    <li><a class="nl" href="#contact"><i style="background:var(--ink)"></i>Contact</a></li>
+    <li><button type="button" class="nl-hurry cut" data-hurry>In a hurry?</button></li>
+  </ul>
+</div></nav>
+
+<header class="hero" id="top">
+  <svg class="hero__bg" id="heroBg" viewBox="0 0 1440 900" preserveAspectRatio="xMidYMax slice" aria-hidden="true"></svg>
+  <div class="butterfly" style="left:38%;top:24%"><svg viewBox="0 0 30 24"><path d="M15 12 C8 0 0 2 2 9 C3 14 10 14 15 12 C10 15 5 22 10 23 C14 23 15 17 15 12 C15 17 16 23 20 23 C25 22 20 15 15 12 C20 14 27 14 28 9 C30 2 22 0 15 12Z" fill="#1E3A26"/></svg></div>
+  <div class="butterfly" style="left:88%;top:58%;animation-duration:28s;animation-delay:-9s"><svg viewBox="0 0 30 24"><path d="M15 12 C8 0 0 2 2 9 C3 14 10 14 15 12 C10 15 5 22 10 23 C14 23 15 17 15 12 C15 17 16 23 20 23 C25 22 20 15 15 12 C20 14 27 14 28 9 C30 2 22 0 15 12Z" fill="#1E3A26"/></svg></div>
+  <div class="butterfly" style="left:6%;top:70%;animation-duration:25s;animation-delay:-4s;width:22px;height:18px"><svg viewBox="0 0 30 24"><path d="M15 12 C8 0 0 2 2 9 C3 14 10 14 15 12 C10 15 5 22 10 23 C14 23 15 17 15 12 C15 17 16 23 20 23 C25 22 20 15 15 12 C20 14 27 14 28 9 C30 2 22 0 15 12Z" fill="#1E3A26"/></svg></div>
+  <p class="fineprint"><b>Fine print</b> fruit shakes when you hover and falls when you click. Every one belongs in my basket.</p>
+  <div class="wrap hero__grid">
+    <div class="hero__copy">
+      <div class="plate-no">Plate I · Projects</div>
+      <h1>Ripe for the <em>picking.</em></h1>
+      <p class="lede">I'm Christine Gomes, a marketing coordinator and designer. I plant ideas, tend the timelines and wait for the good stuff to ripen. This is this season's harvest, still warm from the sun.</p>
+      <div><button type="button" class="tldr" data-hurry aria-label="In a hurry? Get the TL;DR">
+        <svg viewBox="0 0 120 120" aria-hidden="true">
+          <defs><path id="tldrRing" d="M60,60 m-43,0 a43,43 0 1,1 86,0 a43,43 0 1,1 -86,0"/></defs>
+          <circle cx="60" cy="60" r="58" class="disc"/>
+          <circle cx="60" cy="60" r="30.5" class="inner"/>
+          <g class="ring"><text text-anchor="middle"><textPath href="#tldrRing" startOffset="25%">IN A HURRY?</textPath></text><text text-anchor="middle" class="hot"><textPath href="#tldrRing" startOffset="75%">GET THE TL;DR</textPath></text></g>
+          <g filter="url(#printSoft)">
+            <path d="M42 62 Q60 34 78 62" fill="none" stroke="#8A5A33" stroke-width="3.2"/>
+            <g class="crop">
+              <g transform="translate(40 45) scale(.3)"><use href="#fx-mango"/></g>
+              <g transform="translate(52 40) scale(.32) rotate(8 30 35)"><use href="#fx-mango"/></g>
+              <g transform="translate(64 45) scale(.3) rotate(-10 30 35)"><use href="#fx-mango"/></g>
+              <g transform="translate(46 50) scale(.28) rotate(-14 30 35)"><use href="#fx-mango"/></g>
+              <g transform="translate(59 51) scale(.28) rotate(12 30 35)"><use href="#fx-mango"/></g>
+            </g>
+            <path d="M37 61 H83 L78 82 H42 Z" fill="#B47A45"/>
+            <path d="M39 67 H81 M40.5 73.5 H79.5 M41.5 79 H78.5" stroke="#8A5A33" stroke-width="1.8"/>
+            <path d="M48 61 L49.5 82 M60 61 V82 M72 61 L70.5 82" stroke="#D29A60" stroke-width="1.5"/>
+          </g>
+        </svg>
+      </button></div>
+    </div>
+    <div class="tree-col" id="mango"><div class="tree" data-tree="mango" style="--label:#1E3A26"></div></div>
+  </div>
+</header>
+
+<section class="plate" id="oranges"><div class="wrap">
+  <div class="print" style="--bg:#1F5B45;--fg:#F1E6CC;--accent:#F28A2E;--band:#EC7A22;--bandfg:#FFF4DE">
+    <svg class="print__bgart" data-bg="grove" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+    <div class="print__grid">
+      <div class="tree-col"><div class="tree" data-tree="orange" style="--label:#F1E6CC"></div></div>
+      <div class="caption" data-cap="orange"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="plate flip" id="cherries"><div class="wrap">
+  <div class="print" style="--bg:#A9B3E6;--fg:#2B2A4A;--accent:#C8223A;--band:#C8223A;--bandfg:#FFF4DE">
+    <svg class="print__bgart" data-bg="peri" viewBox="0 0 1200 760" preserveAspectRatio="xMidYMid slice" aria-hidden="true"></svg>
+    <div class="print__grid">
+      <div class="tree-col"><div class="tree" data-tree="cherry" style="--label:#2B2A4A"></div></div>
+      <div class="caption" data-cap="cherry"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="plate" id="lemons"><div class="wrap">
+  <div class="print" style="--bg:#EBC4B6;--fg:#3B3536;--accent:#C79B12;--band:#E9C531;--bandfg:#3B3536">
+    <svg class="print__bgart" data-bg="pink" viewBox="0 0 1200 760" preserveAspectRatio="none" aria-hidden="true"></svg>
+    <div class="print__grid">
+      <div class="tree-col"><div class="tree" data-tree="lemon" style="--label:#3B3536"></div></div>
+      <div class="caption" data-cap="lemon"></div>
+    </div>
+  </div>
+</div></section>
+
+<section class="colophon" id="contact"><div class="wrap">
+  <div class="parch">
+    <svg class="study" id="study" viewBox="0 0 400 520" aria-hidden="true"></svg>
+    <div>
+      <div class="plate-no">Colophon · Contact</div>
+      <h2>Let's grow something <em>together.</em></h2>
+      <p class="lead">Hiring for partnership marketing, events or content? I'm open to full-time roles and would love to hear what you're planting.</p>
+      <div class="entries">
+        <div class="entry"><span><small>write to</small><span data-em>christinegomes7063 [at] gmail [dot] com</span></span><button type="button" id="copyEmail" class="cut">Copy</button></div>
+        <div class="entry"><span><small>find me on</small>linkedin.com/in/christineee-g0mes</span><a href="https://www.linkedin.com/in/christineee-g0mes" target="_blank" rel="noopener" class="cut">Visit</a></div>
+      </div>
+      <div class="signoff">with love, Christine</div>
+    </div>
+  </div>
+</div></section>
+
+<footer>Hand-picked in Silver Spring, MD · no fruits were harmed in the printing of this site</footer>
+
+<div class="basket cut away" id="basket" aria-live="polite">
+  <svg viewBox="0 0 64 54" aria-hidden="true" filter="url(#printSoft)">
+    <path d="M14 22 Q32 -4 50 22" fill="none" stroke="#8A5A33" stroke-width="4"/>
+    <circle cx="21" cy="19" r="9" fill="url(#gMango)"/><circle cx="34" cy="16" r="8" fill="url(#gOrange)"/><circle cx="46" cy="20" r="7" fill="url(#gCherry)"/>
+    <path d="M4 22 H60 L54 50 H10 Z" fill="#B47A45"/>
+    <path d="M7 30 H57 M9 38 H55 M11 46 H53" stroke="#8A5A33" stroke-width="2.5"/>
+    <path d="M18 22 L20 50 M30 22 V50 M42 22 L41 50 M52 22 L49 50" stroke="#D29A60" stroke-width="2"/>
+  </svg>
+  <div><b id="count">0/0</b><small>Christine's basket</small></div>
+  <button type="button" id="regrow" class="cut" hidden>Regrow</button>
+</div>
+
+<dialog class="hurry" id="hurry" aria-labelledby="hurryTitle"><div class="sheet cut" id="hurrySheet"></div></dialog>
+<dialog class="splash" id="splash" aria-labelledby="cardTitle"><div class="card cut" id="card"></div></dialog>
+<canvas id="juice" aria-hidden="true"></canvas>
+<div class="toast cut" id="toast" role="status"></div>
+
+<script>
+(()=>{
+/* email is assembled here so address-harvesting bots don't find it in the page source */
+const EM=['christinegomes7063','gmail.com'].join(String.fromCharCode(64));
+document.querySelectorAll('[data-em]').forEach(n=>n.textContent=EM);
+const reduce=matchMedia('(prefers-reduced-motion: reduce)').matches;
+const NS='http://www.w3.org/2000/svg';
+function rng(seed){let s=seed;return()=>((s=(s*9301+49297)%233280)/233280)}
+const f1=n=>n.toFixed(1);
+
+/* citrus segments for the cut fruit */
+function segs(id,color){const g=document.getElementById(id);let h='';const n=10;for(let i=0;i<n;i++){const a0=i/n*Math.PI*2+.06,a1=(i+1)/n*Math.PI*2-.06;const r=35;h+=`<path d="M50 50 L${f1(50+Math.cos(a0)*r)} ${f1(50+Math.sin(a0)*r)} A${r} ${r} 0 0 1 ${f1(50+Math.cos(a1)*r)} ${f1(50+Math.sin(a1)*r)} Z" fill="${color}"/>`}g.innerHTML=h}
+segs('seg-o','#F49A2E');segs('seg-l','#F6DD55');
+
+/* ---------------- Content ---------------- */
+const KINDS={
+  mango:{name:'Mango',plu:'4959',color:'#F2A22C',fx:'fx-mango',cut:'cut-mango',w:11,juice:['#F8B532','#F07A2A','#FFD45C']},
+  orange:{name:'Orange',plu:'4012',color:'#EC7A22',fx:'fx-orange',cut:'cut-orange',w:10,juice:['#F08425','#FFB04A','#F49A2E']},
+  cherry:{name:'Cherries',plu:'4045',color:'#C8223A',fx:'fx-cherry',cut:'cut-cherry',w:12,juice:['#C8223A','#E0413A','#8F1028']},
+  lemon:{name:'Lemon',plu:'4053',color:'#E9C531',fx:'fx-lemon',cut:'cut-lemon',w:10,juice:['#F2D33A','#FFF0A0','#E2B826']},
+};
+const TREES={
+  mango:{spots:[[20,30],[38,14],[60,12],[79,27],[50,42]],items:[
+    {short:'Green Biz Spotlights',link:'projects/storefront-reels/index.html',linkLabel:'Watch the Storefront Reels',kicker:'Campaign · Video',title:'Green Business Spotlights',sub:'Bethesda Green × Montgomery County · Summer 2025',meta:['Producer','10 partners','Short-form video'],
+     sections:[['The brief','Bethesda Green needed short-form video campaigns to spotlight 10 Montgomery County-certified Green Businesses on social.'],
+       ['What I did',['Moved each project from brief and storyboard through shot lists, edits and on-time delivery','Coordinated 10+ on-site shoots and interviews: scheduling, logistics and day-of communication','Aligned each campaign’s messaging with the partner’s brand and the county’s visual standards, working with the county’s Head of Social Media']],
+       ['The harvest',{chips:['10 partners','10+ shoots','20+ assets','3 platforms','~5% follower growth']}]]},
+    {short:'Native Plants',link:'projects/native-plants/index.html',linkLabel:'Read the full case study',kicker:'UX research · Product design',title:'UME Native Plants Redesign',sub:'University of Maryland Extension · iConsultancy Program · Spring 2025',meta:['Team of 6','Figma · FigJam · Google Forms'],
+     sections:[['The brief','UMD Extension runs one of the largest native-plant knowledge bases in Maryland, but it was hard to search and served four very different audiences. We turned it into a personalized, accessible tool for home gardeners, landscapers, nurseries and state agencies.'],
+       ['What I did',['Analyzed 6 competing native-plant resources to see what to borrow and what to avoid','Surveyed gardeners and synthesized the answers into 3 personas through affinity mapping','Mapped 5 end-to-end user flows and designed a Plant Toolkit with search and filtering built to WCAG standards']],
+       ['The harvest',{chips:['6 competitors analyzed','9 survey respondents','3 personas','5 user flows','56-plant prototype']}]]},
+    {short:'MVA Redesign',link:'projects/mva/index.html',linkLabel:'Read the full case study',kicker:'UI/UX · Research',title:'MVA Website Redesign',sub:'Maryland Vehicle Administration (concept) · UMD',meta:['UI/UX designer','Figma'],
+     sections:[['The brief','Redesign the Maryland MVA website so people can find what they need faster, with an accessible, responsive structure.'],
+       ['What I did',['Ran a heuristic evaluation of the existing site','Rebuilt the information architecture around the issues it surfaced','Wireframed and prototyped responsive, accessible screens in Figma']],
+       ['The harvest',{chips:['20+ screens','5 usability issues fixed']}]]},
+    {short:'Vera AI',link:'projects/vera/index.html',linkLabel:'Read the full case study',kicker:'Product design · Cross-platform',title:'Vera: AI Detection Tool',sub:'UMD Info Challenge × Mindpetal · March 2025',meta:['Product designer','Team of 3','One week'],
+     sections:[['The brief','Make AI detection fun and accessible for everyone, regardless of tech literacy: a tool that checks video, images, audio, documents, links and text, and explains why something looks AI-made.'],
+       ['What I did',['Designed the Vera mobile app: color-coded media tiles, a personal greeting, recents, an animated loading state and a result screen with a verdict, a plain-language why and metadata tags','Designed an iMessage app for checking suspicious texts without leaving the conversation','Designed a voicemail check from Control Center that flags AI voice-clone calls','Helped design the web homepage']],
+       ['The harvest',{chips:['3 iOS flows','Web homepage','4 platforms as a team','1 week']}]]},
+    {short:'Wellness Street',link:'projects/wellness-street/index.html',linkLabel:'Read the full case study',kicker:'UI/UX · Gamified',title:'Wellness Street',sub:'Gamified wellness app · UMD · Oct – Dec 2024',meta:['Product designer','Team of 4','Figma · FigJam'],
+     sections:[['The brief','A habit tracker that reimagines social media as a cozy neighborhood: you set wellness goals, share progress with neighbors, and earn coins to decorate your home, without the comparison of a typical feed.'],
+       ['What I did',['Owned the Bulletin: a social feed where every post is tied to a goal, audience is chosen per post, and reactions carry no public like counts','Designed Neighbors and gifting, turning activity into gentle nudges and wishlist gifts delivered to a neighbor’s doorstep','Designed the My Home economy (shop by room, purchase flow, storage and Earn Coins) so coins are only earned through healthy actions and kindness','Sketched concepts for both features before moving to mid-fidelity with the team']],
+       ['The harvest',{chips:['2 features owned','3 flows designed','No paywall, by design','Team of 4']}]]},
+  ]},
+  orange:{cap:{no:'Plate II · Experience',title:'The Orange Grove',latin:'Citrus experientia',facts:[['Planted','2020'],['Yield','5 roles'],['Status','Still producing']],
+      blurb:'Every job here got squeezed for everything it could teach me, from launch-day promos to on-site shoots.'},items:[
+    {short:'Starbucks',kicker:'Jun 2023 – Present · Cloverly, MD',title:'Starbucks',sub:'Barista',meta:['Current role','High-volume store'],
+     sections:[['What I did',['Executed in-store promotional displays and activations for 10+ seasonal product launches','Delivered consistent guest experiences for 200+ customers per shift','Trained and onboarded 3+ new team members']],['The harvest',{chips:['10+ launches','200+ guests per shift','3+ trained']}]]},
+    {short:'Bethesda Green',link:'projects/storefront-reels/index.html',linkLabel:'Watch the Storefront Reels',kicker:'Jun – Sep 2025 · Bethesda, MD',title:'Bethesda Green',sub:'Content Creation Intern',meta:['Internship','Content production'],
+     sections:[['What I did',['Managed end-to-end creative production for 10 Montgomery County-certified Green Business partners','Coordinated 10+ on-site shoots and interviews with business owners','Partnered with the county’s Head of Social Media on messaging and visual standards','Researched, retouched and sized 20+ photo and video assets for 3 social platforms']],['The harvest',{chips:['10 partners','10+ shoots','~5% follower growth']}]]},
+    {short:'Waverly Main Street',kicker:'Jun – Aug 2024 · Baltimore, MD',title:'Waverly Main Street',sub:'Youthworks Coordinator',meta:['Program coordination','Partnerships'],
+     sections:[['The brief','A summer youth employment program needed someone to connect participants with local businesses and keep the whole season organized.'],['What I did',['Coordinated a summer youth employment program placing 20 participants with 3+ local business and community partners','Served as main point of contact for scheduling, communications and logistics','Planned and led 8+ weekly job-readiness workshops']],['The harvest',{chips:['20 participants','3+ partners','8+ workshops']}]]},
+    {short:'Student Life Office',kicker:'Mar – Jun 2022 · Silver Spring, MD',title:'TP/SS Student Life Office',sub:'Student Assistant',meta:['Campus events'],
+     sections:[['What I did',['Supported 10+ campus events in 4 months with print and digital promotional materials','Coordinated requests, revisions and approvals with faculty and staff to meet every event deadline']],['The harvest',{chips:['10+ events','4 months','every deadline met']}]]},
+    {short:'Digital Storytelling',kicker:'Mar 2020 – Nov 2021 · Silver Spring, MD',title:'Digital Storytelling Internship',sub:'Content & Social Media',meta:['Social media'],
+     sections:[['What I did',['Managed day-to-day social content and messaging for “Latinas En Baltimore,” a community program connecting Latina residents with local resources','Collaborated with a UMBC professor to turn academic material into accessible visual content']]]},
+  ]},
+  cherry:{cap:{no:'Plate III · Skills',title:'Cherry-Picked',latin:'Prunus skillsia',facts:[['Clusters','3'],['Picked for','Partnerships & events'],['Grows best','In teams']],
+      blurb:'Three clusters of skills, each one hand-picked for partnership marketing, live events and content.'},items:[
+    {short:'Partnerships & Events',kicker:'Skill cluster',title:'Partnerships & Events',sub:'Keeping brand moments on schedule',meta:['Most requested'],
+     sections:[['In this cluster',{chips:['Activation & event support','Guest experience & logistics','Project & deadline management','Creative request & asset tracking','Cross-functional & partner communication','Recap decks']}]]},
+    {short:'Marketing & Creative',kicker:'Skill cluster',title:'Marketing & Creative',sub:'Making the content that makes it land',meta:['Design roots'],
+     sections:[['In this cluster',{chips:['Integrated campaign planning','Brand storytelling','Social media strategy','Copywriting','Visual design','Photo retouching','Short-form video']}]]},
+    {short:'Tools',kicker:'Skill cluster',title:'Tools',sub:'What’s in the potting shed',meta:['Daily drivers'],
+     sections:[['In this cluster',{chips:['AI tools & vibe coding','Google Workspace','Microsoft Office','Canva','Figma','FigJam','Framer','Photoshop','Illustrator','After Effects','Premiere Pro']}]]},
+  ]},
+  lemon:{cap:{no:'Plate IV · About',title:'The Lemon Tree',latin:'Citrus zestii',facts:[['Rooted in','Maryland'],['Yield','4 lemons'],['Flavor','Zesty']],
+      blurb:'A little background and a lot of zest. When life handed me lemons, I designed a portfolio around fruit.'},items:[
+    {short:'Hi, I’m Christine',kicker:'About me',title:'Hi, I’m Christine',sub:'Marketing coordinator & designer · Silver Spring, MD',meta:['Open to full-time roles'],
+     sections:[['The short version','I’m a marketing coordinator and designer who keeps partner programs, on-site shoots and creative deliverables moving from brief to delivery. I studied technology and information design, so I can also make the content that makes a campaign land.'],
+       ['What I’m looking for','Partnership marketing, events and content roles where I can be hands-on with live experiences and the people behind them.']]},
+    {short:'University of Maryland',kicker:'Aug 2022 – May 2025 · College Park, MD',title:'University of Maryland',sub:'B.A. Technology & Information Design',meta:['GPA 3.7'],
+     sections:[['Studied','B.A. in Technology & Information Design, with a minor in Nonprofit Leadership & Social Innovation.'],['The harvest',{chips:['GPA 3.7','Dean’s List']}]]},
+    {short:'Montgomery College',kicker:'Sep 2020 – Aug 2022 · Takoma Park/Silver Spring, MD',title:'Montgomery College',sub:'General Studies',meta:['Honors program'],
+     sections:[['Studied','General Studies, as part of the Renaissance Scholars Honors Program.'],['Leadership',['Student Senate (Secretary)','Student Activities Board']]]},
+    {short:'Honors & Leadership',kicker:'Recognition',title:'Honors & Leadership',sub:'The ribbons from the county fair',meta:['Scholarships'],
+     sections:[['Honors',['Board of Trustees Academic Specialty Scholarship','Herb Block Foundation Scholarship','Dean’s List']],['Leadership',['Student Senate (Secretary)','Student Activities Board','Renaissance Scholars Honors Program']]]},
+  ]},
+};
+
+/* ---------------- Drawing helpers ---------------- */
+const leafPath=(L,w=.3)=>`M0 0 Q${f1(L/2)} ${f1(-L*w)} ${L} 0 Q${f1(L/2)} ${f1(L*w)} 0 0Z`;
+function bez(p,t){const u=1-t;const x=u*u*u*p[0]+3*u*u*t*p[2]+3*u*t*t*p[4]+t*t*t*p[6];const y=u*u*u*p[1]+3*u*u*t*p[3]+3*u*t*t*p[5]+t*t*t*p[7];
+  const dx=3*u*u*(p[2]-p[0])+6*u*t*(p[4]-p[2])+3*t*t*(p[6]-p[4]);const dy=3*u*u*(p[3]-p[1])+6*u*t*(p[5]-p[3])+3*t*t*(p[7]-p[5]);return[x,y,Math.atan2(dy,dx)*180/Math.PI]}
+const bpath=p=>`M${p[0]} ${p[1]} C${p[2]} ${p[3]} ${p[4]} ${p[5]} ${p[6]} ${p[7]}`;
+function leavesAlong(p,r,{from=.15,to=1,step=.07,L=[26,40],cols,w=.3,spread=55}){let h='';let side=1;for(let t=from;t<=to;t+=step){const[x,y,a]=bez(p,t);side*=-1;const len=L[0]+r()*(L[1]-L[0]);const ang=a+side*(spread+r()*20);h+=`<path d="${leafPath(len,w)}" transform="translate(${f1(x)} ${f1(y)}) rotate(${f1(ang)})" fill="${cols[Math.floor(r()*cols.length)]}"/>`}return h}
+function scallop(cx,cy,rx,ry,n,b,r){const pts=[];for(let i=0;i<n;i++){const a=i/n*Math.PI*2,j=1+(r()-.5)*.06;pts.push([cx+Math.cos(a)*rx*j,cy+Math.sin(a)*ry*j])}
+  let d=`M${f1(pts[0][0])} ${f1(pts[0][1])}`;for(let i=1;i<=n;i++){const p=pts[i%n],am=(i-.5)/n*Math.PI*2,bb=b+(r()-.5)*.04;d+=` Q${f1(cx+Math.cos(am)*rx*bb)} ${f1(cy+Math.sin(am)*ry*bb)} ${f1(p[0])} ${f1(p[1])}`}return d+'Z'}
+function jagged(cx,cy,rx,ry,n,r){let d='';for(let i=0;i<n;i++){const a=i/n*Math.PI*2;const k=i%2?1+.06+r()*.08:.9+r()*.06;const x=cx+Math.cos(a)*rx*k,y=cy+Math.sin(a)*ry*k;d+=(i?' L':'M')+f1(x)+' '+f1(y)}return d+'Z'}
+function spiral(x,y,s,dir){let d=`M${x} ${y}`;for(let i=1;i<=22;i++){const a=i*.45*dir,rr=s*(1-i/26);d+=` L${f1(x+Math.cos(a)*rr-s)} ${f1(y+Math.sin(a)*rr)}`}return d}
+
+/* ---------------- Plate I: mango tree ---------------- */
+function mangoTree(){
+  const r=rng(17);
+  const vines=[[300,470,280,380,190,330,120,250],[300,470,320,360,420,330,500,230],[300,470,290,330,250,220,210,110],[300,470,320,330,360,200,390,90],[300,470,300,400,180,420,90,380],[300,470,330,420,450,430,520,360]];
+  let leaves='',vinesSvg='';
+  vines.forEach(p=>{vinesSvg+=`<path d="${bpath(p)}" stroke="#163A24" stroke-width="7" fill="none" stroke-linecap="round"/>`;leaves+=leavesAlong(p,r,{from:.25,step:.09,L:[24,38],cols:['#163A24','#1F4A2C']})});
+  return `<svg class="art" viewBox="0 0 600 640" aria-hidden="true">
+   <g class="sway">
+    <path d="${scallop(300,255,272,215,32,1.1,r)}" fill="#5FA53A" filter="url(#print)"/>
+    <path d="${scallop(300,262,240,186,28,1.08,r)}" fill="#6DB343" opacity=".55" filter="url(#print)"/>
+    <g filter="url(#printSoft)">${vinesSvg}${leaves}</g>
+   </g>
+   <path d="M244,640 C262,600 270,560 272,505 C250,474 222,450 186,432 L194,420 C228,434 258,452 280,474 C284,446 288,420 292,392 L308,392 C308,420 310,446 314,472 C340,448 372,430 410,414 L416,426 C382,444 350,468 328,505 C330,560 340,600 360,640 Z" fill="#163A24" filter="url(#print)"/>
+  </svg>`;
+}
+function heroBg(){
+  const r=rng(5);let top='';
+  // hanging foliage clumps in the top corners
+  const clump=(x0,y0,dir)=>{let h='';for(let i=0;i<16;i++){const L=50+r()*70;const ang=(dir>0?40:140)+(r()-.5)*120;h+=`<path d="${leafPath(L,.26)}" transform="translate(${f1(x0+(r()-.5)*160)} ${f1(y0+r()*50)}) rotate(${f1(ang)})" fill="${r()>.4?'#163A24':'#20482C'}"/>`}return h};
+  top+=clump(-40,-60,1)+clump(1500,-60,-1);
+  // bottom banana leaves
+  let bot='';for(let i=0;i<13;i++){const x=i*120+(r()-.5)*50,L=130+r()*110,ang=-90+(r()-.5)*90;bot+=`<path d="${leafPath(L,.2)}" transform="translate(${f1(x)} 930) rotate(${f1(ang)})" fill="${i%2?'#163A24':'#1E4A2D'}"/>`}
+  return `<rect x="0" y="0" width="1440" height="900" fill="#F2C335"/>
+   <path d="M0 640 C300 630 600 650 900 636 C1100 628 1300 640 1440 634 L1440 760 L0 760Z" fill="#47B3BF" filter="url(#print)"/>
+   <g stroke="#F2E6B8" stroke-width="3" opacity=".55" filter="url(#printSoft)"><path d="M80 680 H220 M320 700 H520 M700 675 H820 M980 705 H1180 M1260 684 H1380"/></g>
+   <path d="M0 760 C200 730 380 770 560 745 C760 720 980 770 1200 742 C1320 728 1400 745 1440 740 L1440 900 L0 900Z" fill="#2F6E3A" filter="url(#print)"/>
+   <g filter="url(#print)">${top}${bot}</g>`;
+}
+
+/* ---------------- Plate II: orange grove ---------------- */
+function groveTree(){
+  const r=rng(29);
+  const B=[[150,330,250,250,400,230,560,170],[118,452,240,420,380,410,560,388],[196,214,260,160,380,120,520,84],[250,128,270,64,330,24,410,4],[132,392,90,330,40,300,0,260]];
+  let leaves='',br='';
+  B.forEach((p,i)=>{br+=`<path d="${bpath(p)}" stroke="#6B3A22" stroke-width="${[16,14,11,8,10][i]}" fill="none" stroke-linecap="round"/>`;leaves+=leavesAlong(p,r,{from:.08,step:.035,L:[22,34],w:.33,cols:['#2E7A4E','#1C5A3A','#4C9A62','#3B8A57'],spread:60})});
+  TREES.orange.spots=[[B[0],.62],[B[0],.95],[B[1],.72],[B[2],.78],[B[1],.97]].map(([p,t])=>{const[x,y]=bez(p,t);return[x/6,(y+6)/6.4]});
+  let grass='';for(let i=0;i<70;i++){const x=r()*600,h=10+r()*26;grass+=`<path d="M${f1(x)} 640 L${f1(x+3)} ${f1(640-h)} L${f1(x+6)} 640Z" fill="${r()>.5?'#163F2E':'#2B6B4A'}"/>`}
+  let flowers='';for(let i=0;i<16;i++){flowers+=`<circle cx="${f1(r()*600)}" cy="${f1(612+r()*24)}" r="${f1(3+r()*3)}" fill="${['#F28A2E','#F1E6CC','#E8553A'][i%3]}"/>`}
+  return `<svg class="art" viewBox="0 0 600 640" aria-hidden="true">
+    <path d="M60,640 C80,540 100,440 140,320 C170,220 220,140 300,60" stroke="#6B3A22" stroke-width="36" fill="none" stroke-linecap="round" filter="url(#print)"/>
+    <path d="M74,640 C92,540 112,440 150,322" stroke="#8A4E2E" stroke-width="8" fill="none" stroke-linecap="round" opacity=".7"/>
+    <g class="sway"><g filter="url(#printSoft)">${br}${leaves}</g></g>
+    <g filter="url(#printSoft)">${grass}${flowers}</g>
+  </svg>`;
+}
+function bgGrove(){const r=rng(3);let h='<rect width="1200" height="760" fill="#1F5B45"/>';
+  for(let i=0;i<7;i++){h+=`<path d="${scallop(100+i*180+(r()-.5)*60,300+r()*120,110+r()*60,150+r()*60,18,1.12,r)}" fill="#2C6E55" opacity=".7" filter="url(#print)"/>`}
+  h+=`<ellipse cx="280" cy="280" rx="200" ry="240" fill="#BFE3CF" opacity=".18" filter="url(#print)"/>`;
+  return h}
+
+/* ---------------- Plate III: cherry vine ---------------- */
+function cherryVine(){
+  const r=rng(41);
+  const main=[300,-20,330,120,250,230,300,340];const main2=[300,340,350,450,270,520,310,640];
+  const sides=[[296,150,240,140,190,150,150,175,-1],[290,250,380,250,430,270,452,300,1],[300,400,240,400,200,410,170,440,-1],[305,520,380,520,420,540,446,560,1]];
+  let h=`<path d="${bpath(main)}" stroke="#7A4A2B" stroke-width="13" fill="none" stroke-linecap="round"/><path d="${bpath(main2)}" stroke="#7A4A2B" stroke-width="9" fill="none" stroke-linecap="round"/>`;
+  sides.forEach((p,i)=>{h+=`<path d="${bpath(p.slice(0,8))}" stroke="#7A4A2B" stroke-width="6" fill="none" stroke-linecap="round"/>`;
+    const[x,y]=bez(p,.55);h+=`<path d="${spiral(x+(p[8]>0?10:-10),y-26,16,p[8])}" stroke="#7A4A2B" stroke-width="2.5" fill="none" stroke-linecap="round"/>`;
+    const[lx,ly,la]=bez(p,.3);h+=`<path d="${leafPath(42,.34)}" transform="translate(${f1(lx)} ${f1(ly)}) rotate(${f1(la-60*p[8])})" fill="#6E8E3E"/>`});
+  // tendrils off the main stem
+  [[318,80,1],[268,300,-1],[312,470,1]].forEach(([x,y,d])=>{h+=`<path d="M${x} ${y} C${x+d*40} ${y-10} ${x+d*60} ${y-40} ${x+d*50} ${y-60}" stroke="#7A4A2B" stroke-width="3" fill="none" stroke-linecap="round"/><path d="${spiral(x+d*60,y-60,12,d)}" stroke="#7A4A2B" stroke-width="2.2" fill="none"/>`});
+  // decorative cut cherries, like a botanical sheet
+  const deco=`<g transform="translate(410 70) scale(.9)"><use href="#cut-cherry"/></g><g transform="translate(70 520) scale(.7) rotate(-14)"><use href="#cut-cherry"/></g>`;
+  TREES.cherry.spots=[[sides[0],1],[sides[1],1],[sides[2],1]].map(([p])=>[p[6]/6,(p[7]+4)/6.4]);
+  return `<svg class="art" viewBox="0 0 600 640" aria-hidden="true"><g class="sway"><g filter="url(#printSoft)">${h}</g></g>${deco}</svg>`;
+}
+function bgPeri(){return `<rect width="1200" height="760" fill="#A9B3E6"/><ellipse cx="300" cy="200" rx="420" ry="300" fill="#B8C0EC" opacity=".6" filter="url(#print)"/><ellipse cx="980" cy="620" rx="380" ry="260" fill="#9AA5DE" opacity=".6" filter="url(#print)"/>`}
+
+/* ---------------- Plate IV: vintage lemon tree ---------------- */
+function lemonTree(){
+  const r=rng(57);
+  return `<svg class="art" viewBox="0 0 600 640" aria-hidden="true">
+    <path d="M-40 596 L640 588 L640 660 L-40 660Z" fill="#A6A3A1" filter="url(#print)"/>
+    <path d="M270,640 C278,560 280,480 274,420 C250,400 220,380 190,360 L198,348 C232,364 262,384 282,404 C286,380 290,356 296,330 L312,334 C306,360 304,386 306,410 C330,388 362,370 400,356 L406,368 C372,384 342,404 322,430 C320,500 324,570 336,640 Z" fill="#6E655C" filter="url(#print)"/>
+    <g class="sway">
+      <path d="${scallop(300,250,252,200,44,1.07,r)}" fill="#6F7672" filter="url(#print)"/>
+      <path d="${scallop(286,232,196,146,34,1.06,r)}" fill="#7F8682" opacity=".6" filter="url(#print)"/>
+    </g>
+  </svg>`;
+}
+function bgPink(){return `<rect width="1200" height="760" fill="#EBC4B6"/>`}
+
+/* ---------------- Christine (vintage storybook) ---------------- */
+const GIRL=`<svg viewBox="0 0 120 220" aria-hidden="true">
+  <g filter="url(#printSoft)">
+  <ellipse cx="60" cy="213" rx="30" ry="4" fill="#163A24" opacity=".25"/>
+  <rect x="50" y="158" width="7" height="44" rx="3" fill="#C68A5C"/><rect x="63" y="158" width="7" height="42" rx="3" fill="#C68A5C"/>
+  <rect x="49.5" y="194" width="8" height="9" fill="#F4ECDA"/><rect x="62.5" y="192" width="8" height="9" fill="#F4ECDA"/>
+  <path d="M47 203 H60 C60 208 57 209 52 209 C48 209 46 207 47 203Z" fill="#1E1A18"/><path d="M61 201 H74 C74 206 71 207 66 207 C62 207 60 205 61 201Z" fill="#1E1A18"/>
+  <g class="arms">
+    <path d="M50 98 C43 80 43 60 49 38" stroke="#C68A5C" stroke-width="7.5" fill="none" stroke-linecap="round"/>
+    <path d="M70 98 C77 80 79 60 73 36" stroke="#C68A5C" stroke-width="7.5" fill="none" stroke-linecap="round"/>
+    <circle cx="49" cy="35" r="5" fill="#C68A5C"/><circle cx="73" cy="33" r="5" fill="#C68A5C"/>
+  </g>
+  <path d="M48 94 H72 L75 122 C84 134 90 150 90 162 C74 168 46 168 30 162 C30 150 37 134 45 122 Z" fill="#D9472B"/>
+  <circle cx="45" cy="98" r="6" fill="#D9472B"/><circle cx="75" cy="98" r="6" fill="#D9472B"/>
+  <g fill="#F4ECDA"><circle cx="56" cy="106" r="2"/><circle cx="66" cy="114" r="2"/><circle cx="52" cy="130" r="2.3"/><circle cx="64" cy="138" r="2.3"/><circle cx="44" cy="148" r="2.3"/><circle cx="76" cy="146" r="2.3"/><circle cx="56" cy="156" r="2.3"/><circle cx="70" cy="126" r="2"/><circle cx="38" cy="158" r="2"/><circle cx="82" cy="157" r="2"/></g>
+  <rect x="56" y="84" width="8" height="12" fill="#B57A4D"/>
+  <path d="M41 72 C40 52 50 47 60 47 C72 47 80 53 79 72 L80 90 C73 94 66 91 60 91 C54 91 47 94 40 90 Z" fill="#3B2316"/>
+  <ellipse cx="60" cy="73" rx="16" ry="17" fill="#C68A5C"/>
+  <path d="M43 68 C43 54 50 50 60 50 C70 50 77 54 77 68 Z" fill="#3B2316"/>
+  <g id="eyes"><ellipse cx="54" cy="74" rx="1.8" ry="2.3" fill="#1E1A18"/><ellipse cx="66" cy="74" rx="1.8" ry="2.3" fill="#1E1A18"/></g>
+  <circle cx="49.5" cy="80" r="3" fill="#E07A6A" opacity=".55"/><circle cx="70.5" cy="80" r="3" fill="#E07A6A" opacity=".55"/>
+  <path d="M56.5 83 Q60 86 63.5 83" stroke="#7A2E22" stroke-width="1.6" fill="none" stroke-linecap="round"/>
+  </g>
+</svg>`;
+
+/* ---------------- Contact botanical study ---------------- */
+function study(){
+  const r=rng(71);const stem=[200,0,190,120,230,220,210,330];
+  let lv='';[[.12,1],[.2,-1],[.32,1],[.45,-1],[.58,1],[.7,-1],[.82,1]].forEach(([t,s])=>{const[x,y,a]=bez(stem,t);const L=90+r()*40;
+    lv+=`<g transform="translate(${f1(x)} ${f1(y)}) rotate(${f1(a+s*58)})"><path d="${leafPath(L,.2)}" fill="${r()>.5?'#5E8B4A':'#4E7B3E'}"/><path d="M4 0 H${L-8}" stroke="#A8C58E" stroke-width="1.6"/></g>`});
+  const[mx,my]=bez(stem,.62),[nx,ny]=bez(stem,.88);
+  return `<g filter="url(#printSoft)"><path d="${bpath(stem)}" stroke="#4A3226" stroke-width="7" fill="none" stroke-linecap="round"/>${lv}
+   <path d="M${f1(mx)} ${f1(my)} C${f1(mx+30)} ${f1(my+20)} ${f1(mx+50)} ${f1(my+30)} ${f1(mx+60)} ${f1(my+60)}" stroke="#4A3226" stroke-width="3.5" fill="none"/>
+   <path d="M${f1(nx)} ${f1(ny)} C${f1(nx-20)} ${f1(ny+20)} ${f1(nx-40)} ${f1(ny+30)} ${f1(nx-48)} ${f1(ny+56)}" stroke="#4A3226" stroke-width="3.5" fill="none"/></g>
+   <g transform="translate(${f1(mx+20)} ${f1(my+50)}) scale(2.1)"><use href="#fx-mango"/></g>
+   <g transform="translate(${f1(nx-92)} ${f1(ny+46)}) scale(1.8) rotate(-12)"><use href="#fx-mango"/></g>
+   <text x="200" y="505" text-anchor="middle" font-family="Kalam, cursive" font-size="18" fill="#6B5340">Mangifera christinae · fig. 1</text>`;
+}
+
+/* ---------------- Build ---------------- */
+document.getElementById('heroBg').innerHTML=heroBg();
+document.querySelectorAll('[data-bg]').forEach(s=>{s.innerHTML={grove:bgGrove,peri:bgPeri,pink:bgPink}[s.dataset.bg]()});
+document.getElementById('study').innerHTML=study();
+const ART={mango:mangoTree,orange:groveTree,cherry:cherryVine,lemon:lemonTree};
+TREES.lemon.spots=[[27,36],[45,20],[66,30],[50,47]];
+const LEAFC={mango:['#163A24','#5FA53A'],orange:['#2E7A4E','#4C9A62'],cherry:['#6E8E3E','#7A4A2B'],lemon:['#6F7672','#8E948F']};
+
+let girl;const all=[];
+Object.entries(TREES).forEach(([kind,cfg])=>{
+  const box=document.querySelector(`.tree[data-tree="${kind}"]`);
+  box.innerHTML=ART[kind]();
+  const K=KINDS[kind];
+  cfg.items.forEach((it,i)=>{
+    const [x,y]=cfg.spots[i];
+    const b=document.createElement('button');
+    b.type='button';b.className='fruit';b.style.left=x+'%';b.style.top=y+'%';b.style.width=K.w+'%';
+    b.setAttribute('aria-label',`Pick the ${K.name.toLowerCase()}: ${it.title}`);
+    b.innerHTML=`<svg viewBox="0 0 60 70"><use href="#${K.fx}"/></svg><span class="tag">${it.short}</span>`;
+    const rec={kind,it,b,box,fallen:false,fy:0,fx:0,rot:0,picked:false};
+    b.addEventListener('click',()=>pick(rec));
+    b.addEventListener('pointerenter',()=>{if(!rec.fallen){box.classList.remove('rustle');void box.offsetWidth;box.classList.add('rustle');leaf(rec)}});
+    box.appendChild(b);all.push(rec);it.rec=rec;
+  });
+  if(kind==='mango'){
+    const g=document.createElement('button');g.type='button';g.className='girl';g.setAttribute('aria-label','Christine. Click her for a tip.');g.innerHTML=GIRL;box.appendChild(g);
+    const bub=document.createElement('div');bub.className='bubble cut';bub.textContent='Little help? These mangoes are way up there.';box.appendChild(bub);
+    girl={el:g,bub};g.addEventListener('click',()=>talk());
+    const hb=document.createElement('div');hb.className='hbasket';hb.id='hbasket';
+    hb.innerHTML=`<svg viewBox="0 0 64 60" aria-hidden="true"><g filter="url(#printSoft)">
+      <path d="M12 32 Q32 2 52 32" fill="none" stroke="#8A5A33" stroke-width="4"/>
+      <g id="hbFruit"></g>
+      <path d="M4 32 H60 L54 58 H10 Z" fill="#B47A45"/>
+      <path d="M7 40 H57 M9 48 H55" stroke="#8A5A33" stroke-width="2.5"/>
+      <path d="M18 32 L20 58 M30 32 V58 M42 32 L41 58 M52 32 L49 58" stroke="#D29A60" stroke-width="2"/></g></svg>
+      <span class="count" id="hbCount">0 picked</span>`;
+    box.appendChild(hb);
+  }
+  if(cfg.cap){
+    const c=document.querySelector(`[data-cap="${kind}"]`),P=cfg.cap;
+    const num={orange:2,cherry:3,lemon:4}[kind];
+    let bars='';const br=rng(num*7);for(let i=0;i<30;i++)bars+=`<i style="width:${1+Math.floor(br()*3)}px;height:${i%7?70+br()*30:100}%"></i>`;
+    c.innerHTML=`<div class="packet"><div class="packet__crimp"></div>
+      <div class="packet__band"><div><span class="packet__stamp">Seed packet № ${num} · ${P.no.split('·')[1].trim()}</span><h2>${P.title}</h2><div class="latin">${P.latin}</div></div>
+        <div class="packet__art"><svg viewBox="0 0 60 70"><use href="#${K.fx}"/></svg></div></div>
+      <div class="packet__body"><dl class="facts">${P.facts.map(f=>`<div><dt>${f[0]}</dt><span class="dots"></span><dd>${f[1]}</dd></div>`).join('')}</dl>
+      <p>${P.blurb}</p>
+      <div class="sow"><b>Sowing instructions:</b> shake a branch until something falls, or pick by name below.</div>
+      <div class="contents">Contents</div>
+      <div class="picklist">${cfg.items.map((it,i)=>`<button type="button" class="cut" data-i="${i}"><i></i>${it.short}</button>`).join('')}</div>
+      <div class="packet__foot"><span>Net wt. ${cfg.items.length} ${kind==='cherry'?'clusters':kind==='lemon'?'lemons':'roles'}</span><span>Packed for 2026</span><span class="bars">${bars}</span></div></div></div>`;
+    c.querySelectorAll('.picklist button').forEach(btn=>{const rec=cfg.items[+btn.dataset.i].rec;rec.chip=btn;btn.addEventListener('click',()=>{
+      const r=rec.box.getBoundingClientRect();
+      if(r.top<0||r.bottom>innerHeight){rec.box.scrollIntoView({behavior:reduce?'auto':'smooth',block:'center'});setTimeout(()=>pick(rec),reduce?0:600)}else pick(rec)})});
+  }
+});
+
+/* ---------------- Christine talks ---------------- */
+const LINES=['Little help? These mangoes are way up there.','Psst. The orange grove down the path is where my work experience grows.','Fun fact: mangoes are related to cashews and pistachios.','Fill the whole basket and something nice happens.','Every fruit here has a story. Go ahead, pick one.','The cherries are my skills. Hand-picked, obviously.'];
+let li=0,bt;
+function talk(text){girl.bub.textContent=text||LINES[(++li)%LINES.length];girl.bub.classList.remove('hide');hop();clearTimeout(bt);bt=setTimeout(()=>girl.bub.classList.add('hide'),4500)}
+function hop(){if(reduce)return;girl.el.classList.remove('hop');void girl.el.offsetWidth;girl.el.classList.add('hop')}
+setTimeout(()=>girl.bub.classList.add('hide'),5200);
+const eyes=document.getElementById('eyes');
+addEventListener('pointermove',e=>{const r=girl.el.getBoundingClientRect();const cx=r.left+r.width*.5,cy=r.top+r.height*.33;const a=Math.atan2(e.clientY-cy,e.clientX-cx);eyes.setAttribute('transform',`translate(${f1(Math.cos(a)*1.4)} ${f1(Math.sin(a)*1.2)})`)});
+
+/* ---------------- Leaves ---------------- */
+function leaf(rec){
+  if(reduce)return;
+  const l=document.createElement('span');l.className='leaf-fall';
+  l.style.left=(parseFloat(rec.b.style.left)+(Math.random()*8-4))+'%';l.style.top=(parseFloat(rec.b.style.top)-1)+'%';
+  l.style.setProperty('--lx',(Math.random()*90-45)+'px');const c=LEAFC[rec.kind];l.style.background=c[Math.floor(Math.random()*c.length)];
+  rec.box.appendChild(l);setTimeout(()=>l.remove(),1900);
+}
+
+/* ---------------- Picking ---------------- */
+function groundDist(rec){const br=rec.box.getBoundingClientRect();const topPx=br.height*parseFloat(rec.b.style.top)/100;return br.height*.955-topPx-rec.b.offsetHeight*.85}
+function landing(rec){const r=rec.b.getBoundingClientRect();return[r.left+r.width/2,r.top+r.height*.75]}
+function place(rec){rec.b.style.transform=`translate(${rec.fx}px,${rec.fy}px) rotate(${rec.rot}deg)`}
+function pick(rec){
+  if(rec.busy)return;
+  if(rec.fallen){if(rec.stored){openCard(rec,innerWidth/2,innerHeight/2)}else{const[x,y]=landing(rec);openCard(rec,x,y)}return}
+  rec.busy=true;const dist=groundDist(rec);const K=KINDS[rec.kind];
+  rec.fx=(Math.random()-.5)*50;rec.rot=(Math.random()-.5)*70;rec.b.style.animation='none';
+  const finish=()=>{
+    rec.fallen=true;rec.busy=false;rec.b.classList.add('picked');rec.b.style.animation='';
+    rec.b.setAttribute('aria-label',`Open the ${K.name.toLowerCase()} again: ${rec.it.title}`);
+    if(!rec.picked){rec.picked=true;updateCount(true,rec.kind)}
+    if(rec.chip)rec.chip.classList.add('done');
+    const[x,y]=landing(rec);splat(x,y,K.juice);if(rec.kind==='mango')hop();
+    setTimeout(()=>openCard(rec,x,y),reduce?0:200);
+  };
+  if(reduce){rec.fy=dist;place(rec);finish();return}
+  let y=0,vy=-3,bounced=false,x=0,rot=0,last=performance.now();const g=.9*Math.max(1,dist/320);
+  (function step(now=performance.now()){const k=Math.min(4,(now-last)/16.67);last=now;vy+=g*k;y+=vy*k;x+=rec.fx/34*k;rot+=rec.rot/34*k;
+    if(y>=dist){y=dist;if(!bounced){bounced=true;vy=-vy*.3;const[lx,ly]=landing(rec);splat(lx,ly,K.juice,18)}else{rec.fy=dist;rec.fx=x;rec.rot=rot;place(rec);finish();return}}
+    rec.b.style.transform=`translate(${x}px,${y}px) rotate(${rot}deg)`;requestAnimationFrame(step)})();
+}
+addEventListener('resize',()=>all.forEach(rec=>{if(rec.fallen&&!rec.stored){rec.fy=groundDist(rec);place(rec)}}));
+
+/* ---------------- Juice (ink droplets) ---------------- */
+const cv=document.getElementById('juice'),cx=cv.getContext('2d');let drops=[],running=false;
+function size(){cv.width=innerWidth*devicePixelRatio;cv.height=innerHeight*devicePixelRatio;cx.setTransform(devicePixelRatio,0,0,devicePixelRatio,0,0)}
+size();addEventListener('resize',size);
+function splat(x,y,cols,n=48){if(reduce)return;for(let i=0;i<n;i++){const a=-Math.PI*Math.random(),s=2+Math.random()*7;drops.push({x,y,vx:Math.cos(a)*s,vy:Math.sin(a)*s-2,r:2+Math.random()*5,c:cols[i%cols.length],life:50+Math.random()*30,shape:0})}run()}
+function rain(){const cols=['#F2A22C','#EC7A22','#C8223A','#E9C531','#5FA53A'];for(let i=0;i<140;i++)drops.push({x:Math.random()*innerWidth,y:-20-Math.random()*innerHeight*.6,vx:(Math.random()-.5)*2,vy:2+Math.random()*3,r:7+Math.random()*7,c:cols[i%5],life:230,shape:1,rot:Math.random()*6});run()}
+function run(){if(!running){running=true;requestAnimationFrame(tick)}}
+function tick(){cx.clearRect(0,0,innerWidth,innerHeight);drops=drops.filter(d=>d.life-->0&&d.y<innerHeight+40);
+  for(const d of drops){d.vy+=d.shape?.06:.32;d.x+=d.vx;d.y+=d.vy;cx.globalAlpha=Math.min(.95,d.life/25);cx.fillStyle=d.c;cx.beginPath();
+    if(d.shape){d.rot+=.04;cx.ellipse(d.x,d.y,d.r,d.r*.8,d.rot,0,Math.PI*2)}else cx.ellipse(d.x,d.y,d.r,d.r*1.3,Math.atan2(d.vy,d.vx)+Math.PI/2,0,Math.PI*2);cx.fill()}
+  cx.globalAlpha=1;if(drops.length)requestAnimationFrame(tick);else{running=false;cx.clearRect(0,0,innerWidth,innerHeight)}}
+
+/* ---------------- Card ---------------- */
+const dlg=document.getElementById('splash'),card=document.getElementById('card');let lastFocus;
+function sec([h,v]){let inner;if(Array.isArray(v))inner=`<ul>${v.map(x=>`<li>${x}</li>`).join('')}</ul>`;else if(typeof v==='object')inner=`<div class="chips">${v.chips.map(x=>`<span class="cut">${x}</span>`).join('')}</div>`;else inner=`<p>${v}</p>`;return `<div><h4>${h}</h4>${inner}</div>`}
+function nextOf(rec){const list=TREES[rec.kind].items;const i=list.indexOf(rec.it);return list.slice(i+1).concat(list.slice(0,i)).find(it=>!it.rec.picked)}
+function blob(color){const r=rng(Math.floor(Math.random()*999)+1);let d='';const n=14;for(let i=0;i<n;i++){const a=i/n*Math.PI*2,k=.72+r()*.35;d+=(i?' L':'M')+f1(125+Math.cos(a)*100*k)+' '+f1(125+Math.sin(a)*100*k)}
+  let dots='';for(let i=0;i<9;i++){const a=r()*Math.PI*2,rr=110+r()*20;dots+=`<circle cx="${f1(125+Math.cos(a)*rr)}" cy="${f1(125+Math.sin(a)*rr)}" r="${f1(3+r()*7)}" fill="${color}"/>`}
+  return `<svg class="card__blob" viewBox="0 0 250 250" aria-hidden="true"><g filter="url(#print)" opacity=".85"><path d="${d}Z" fill="${color}"/>${dots}</g></svg>`}
+let lastRec=null;
+function openCard(rec,x,y){
+  const K=KINDS[rec.kind],it=rec.it;lastFocus=rec.stored?null:rec.b;lastRec=rec;card.style.setProperty('--c',K.color);const nxt=nextOf(rec);
+  card.innerHTML=`<button class="x" type="button" aria-label="Close" data-close>×</button>
+    <div class="card__head">${blob(K.color)}<div class="card__cut"><svg viewBox="0 0 100 100"><use href="#${K.cut}"/></svg></div>
+      <div><div class="plu">${K.name} · PLU ${K.plu}</div><h3 id="cardTitle">${it.title}</h3><div class="card__sub">${it.sub}</div></div></div>
+    <div class="card__body"><div class="meta"><span>${it.kicker}</span>${it.meta.map(m=>`<span>${m}</span>`).join('')}</div>
+      ${it.link?`<a class="card__link cut" href="${it.link}"><span>${it.linkLabel||'See the full project'}</span><b aria-hidden="true">→</b></a>`:''}${it.sections.map(sec).join('')}</div>
+    <div class="card__foot"><button class="btn cut" type="button" data-close>Back to the garden</button>${nxt?`<button class="btn btn--go cut" type="button" data-next>Pick the next ${K.name.toLowerCase()} →</button>`:''}</div>`;
+  card.querySelectorAll('[data-close]').forEach(b=>b.addEventListener('click',close));
+  const nb=card.querySelector('[data-next]');if(nb)nb.addEventListener('click',()=>{close();setTimeout(()=>pick(nxt.rec),reduce?0:250)});
+  if(!dlg.open)dlg.showModal();card.scrollTop=0;
+  const r=card.getBoundingClientRect();card.style.transformOrigin=`${x-r.left}px ${y-r.top}px`;
+  dlg.classList.remove('in');void dlg.offsetWidth;dlg.classList.add('in');
+}
+function close(){dlg.close()}
+dlg.addEventListener('click',e=>{if(e.target===dlg)close()});
+function stash(rec){
+  if(!rec||!rec.fallen||rec.stored)return;rec.stored=true;
+  const hb=document.getElementById('hbasket'),hr=hb.getBoundingClientRect();
+  const target=(hr.bottom>0&&hr.top<innerHeight)?hr:(basket.classList.contains('away')?null:basket.getBoundingClientRect());
+  const done=()=>{rec.b.hidden=true;rec.b.style.transition='';rec.b.style.opacity=''};
+  if(reduce||!target){done();return}
+  const r=rec.b.getBoundingClientRect();
+  const dx=(target.left+target.width/2)-(r.left+r.width/2),dy=(target.top+target.height*.35)-(r.top+r.height/2);
+  rec.b.style.transition='transform .65s cubic-bezier(.5,-.2,.6,1),opacity .65s ease-in';
+  rec.b.style.transform=`translate(${rec.fx+dx}px,${rec.fy+dy}px) rotate(${rec.rot+90}deg) scale(.2)`;rec.b.style.opacity='0';
+  setTimeout(done,680);
+}
+dlg.addEventListener('close',()=>{dlg.classList.remove('in');setTimeout(()=>stash(lastRec),60);if(total===picked)celebrate();if(lastFocus)lastFocus.focus({preventScroll:true})});
+
+/* ---------------- Basket ---------------- */
+const countEl=document.getElementById('count'),basket=document.getElementById('basket'),regrowBtn=document.getElementById('regrow');
+const total=all.length;let picked=0,celebrated=false;
+const SLOTS=[];[[28,7,12],[22,6,15],[16,5,18]].forEach(([y,n,x0])=>{for(let i=0;i<n;i++)SLOTS.push([x0+i*6.6,y])});
+const GRAD={mango:'gMango',orange:'gOrange',cherry:'gCherry',lemon:'gLemon'};
+function updateCount(add,kind){picked+=add?1:0;countEl.textContent=`${picked}/${total}`;regrowBtn.hidden=picked===0;
+  document.getElementById('hbCount').textContent=picked===total?'basket full!':`${picked} of ${total} picked`;
+  const hf=document.getElementById('hbFruit');
+  if(add&&kind){const[x,y]=SLOTS[(picked-1)%SLOTS.length];const c=document.createElementNS(NS,'circle');c.setAttribute('cx',x+(Math.random()-.5));c.setAttribute('cy',y);c.setAttribute('r',4.6);c.setAttribute('fill',`url(#${GRAD[kind]})`);hf.appendChild(c)}
+  if(!add)hf.innerHTML='';
+  if(add&&!reduce){[basket,document.getElementById('hbasket')].forEach(el=>{el.classList.remove('bump');void el.offsetWidth;el.classList.add('bump')})}}
+new IntersectionObserver(([e])=>basket.classList.toggle('away',e.isIntersecting),{threshold:0}).observe(document.getElementById('hbasket'));
+updateCount(false);
+function celebrate(){if(celebrated)return;celebrated=true;rain();talk('A full basket! Now let’s grow something together.');say('Full basket! My contact details are at the bottom.')}
+regrowBtn.addEventListener('click',()=>{all.forEach(rec=>{rec.fallen=false;rec.picked=false;rec.stored=false;rec.b.hidden=false;rec.b.style.transition='';rec.b.style.opacity='';rec.fy=0;rec.b.style.transform='';rec.b.classList.remove('picked');rec.b.classList.add('regrow');setTimeout(()=>rec.b.classList.remove('regrow'),850);
+  rec.b.setAttribute('aria-label',`Pick the ${KINDS[rec.kind].name.toLowerCase()}: ${rec.it.title}`);if(rec.chip)rec.chip.classList.remove('done')});picked=0;celebrated=false;updateCount(false);say('The garden grew back')});
+
+/* ---------------- In a hurry? ---------------- */
+const hurry=document.getElementById('hurry'),sheet=document.getElementById('hurrySheet');
+const esc=t=>String(t).replace(/&/g,'&amp;').replace(/</g,'&lt;');
+sheet.innerHTML=`<button class="x" type="button" aria-label="Close" data-hclose>×</button>
+  <div class="kick">The TL;DR</div>
+  <h2 id="hurryTitle">Christine Gomes</h2>
+  <p class="who">Marketing coordinator and designer in Silver Spring, MD. I keep partner programs, on-site shoots and creative deliverables moving from brief to delivery, and I design the content that makes them land. Open to full-time roles in partnership marketing, events and content.</p>
+  <div class="stats">
+    <div class="stat cut"><b>10</b><span>partner video campaigns produced for Bethesda Green</span></div>
+    <div class="stat cut"><b>20</b><span>youth participants placed with local partners</span></div>
+    <div class="stat cut"><b>3+ yrs</b><span>high-volume guest service, all through college</span></div>
+  </div>
+  <div class="cols">
+    <div>
+      <h3>Experience</h3>
+      <ul><li><strong>Ichamati</strong>, Social Media Coordinator<small>2020 – Present · Bengali nonprofit association raising funds to help people in need in Bangladesh</small></li>${TREES.orange.items.map(it=>`<li><strong>${esc(it.title)}</strong>, ${esc(it.sub)}<small>${esc(it.kicker)}</small></li>`).join('')}</ul>
+      <h3>Education</h3>
+      <ul><li><strong>University of Maryland</strong>, B.A. Technology &amp; Information Design<small>Minor in Nonprofit Leadership &amp; Social Innovation · 2025 · GPA 3.7 · Dean’s List</small></li><li><strong>Montgomery College</strong>, General Studies<small>2020 – 2022 · Renaissance Scholars Honors Program · Student Senate Secretary</small></li></ul>
+    </div>
+    <div>
+      <h3>Projects</h3>
+      <ul>${TREES.mango.items.map(it=>`<li>${it.link?`<a href="${it.link}">${esc(it.title)} →</a>`:`<strong>${esc(it.title)}</strong>`}<small>${esc(it.kicker)}</small></li>`).join('')}</ul>
+      <h3>Skills</h3>
+      <div class="tags">${['Partnerships & events','Project & deadline management','Guest experience','Integrated campaigns','Short-form video','Visual & UX design','Figma','FigJam','Adobe Creative Suite','Google Workspace','AI tools & vibe coding'].map(t=>`<span class="cut">${esc(t)}</span>`).join('')}</div>
+    </div>
+  </div>
+  <div class="reach">
+    <span class="addr">${EM}</span><button type="button" class="cut" id="hCopy">Copy email</button>
+    <a class="cut" href="https://www.linkedin.com/in/christineee-g0mes" target="_blank" rel="noopener">LinkedIn ↗</a>
+    <button type="button" class="back cut" data-hclose>Back to the garden</button>
+  </div>`;
+document.querySelectorAll('[data-hurry]').forEach(b=>b.addEventListener('click',()=>{hurry.showModal();sheet.scrollTop=0}));
+sheet.querySelectorAll('[data-hclose]').forEach(b=>b.addEventListener('click',()=>hurry.close()));
+hurry.addEventListener('click',e=>{if(e.target===hurry)hurry.close()});
+
+/* ---------------- Toast + copy ---------------- */
+const toast=document.getElementById('toast');let tt;
+function say(m){toast.textContent=m;toast.classList.add('show');clearTimeout(tt);tt=setTimeout(()=>toast.classList.remove('show'),2600)}
+function copy(btn,text,label){const sel=()=>{const r=document.createRange();r.selectNodeContents(btn.previousElementSibling);const s=getSelection();s.removeAllRanges();s.addRange(r);say('Selected. Press Ctrl or Cmd + C')};
+  try{navigator.clipboard.writeText(text).then(()=>{say(label+' copied');btn.textContent='Copied';setTimeout(()=>btn.textContent='Copy',1600)},sel)}catch(_){sel()}}
+document.getElementById('copyEmail').addEventListener('click',e=>copy(e.currentTarget,EM,'Email'));
+document.getElementById('hCopy').addEventListener('click',e=>copy(e.currentTarget,EM,'Email'));
+})();
+</script>
+
+
+
+</body>
+</html>

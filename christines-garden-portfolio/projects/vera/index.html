@@ -1,0 +1,500 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Vera case study</title>
+<meta name="description" content="Vera: an AI detection tool with a personality. A UX/UI case study by Christine Gomes.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Instrument+Sans:wght@400;500;600;700&amp;family=Space+Grotesk:wght@500;600;700&amp;display=swap" rel="stylesheet">
+<style>
+body{margin:0;background:#151522}
+h1,h2,h3{font-family:'Space Grotesk','Instrument Sans',sans-serif;letter-spacing:-0.025em}
+@keyframes vr-ping{0%{transform:translate(-50%,-50%) scale(.6);opacity:.9}100%{transform:translate(-50%,-50%) scale(1.9);opacity:0}}
+a{color:#ADFF71}a:hover{color:#D6FFB5}
+@keyframes vr-float{0%,100%{transform:translateY(0) rotate(var(--r,0deg))}50%{transform:translateY(-10px) rotate(var(--r,0deg))}}
+@keyframes vr-glow{0%,100%{opacity:.75;transform:scale(1)}50%{opacity:1;transform:scale(1.08)}}
+@media (prefers-reduced-motion: reduce){*{animation:none !important;transition:none !important}}
+</style>
+</head>
+<body>
+<template id="dc-template">
+<main style="font-family: 'Instrument Sans', 'Helvetica Neue', Arial, sans-serif; color: #ECEAF8; background: linear-gradient(180deg, #151522 0%, #2A2846 30%, #3B3866 60%, #232238 100%); font-size: 18px; line-height: 1.6; overflow-x: hidden">
+
+<!-- HERO -->
+<section style="position: relative; padding: 72px 24px 56px; overflow: hidden">
+<div aria-hidden="true" style="position: absolute; left: -120px; top: -80px; width: 520px; height: 520px; border-radius: 50%; background: radial-gradient(circle, rgba(178,58,160,0.55) 0%, rgba(178,58,160,0) 70%); animation: vr-glow 6s ease-in-out infinite"></div>
+<div aria-hidden="true" style="position: absolute; right: -100px; bottom: -160px; width: 560px; height: 560px; border-radius: 50%; background: radial-gradient(circle, rgba(173,255,113,0.28) 0%, rgba(173,255,113,0) 70%); animation: vr-glow 7s ease-in-out infinite 1s"></div>
+<div style="position: relative; max-width: 1160px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 48px; align-items: center">
+<div style="flex: 1 1 460px; min-width: 0">
+<div style="display: flex; align-items: center; gap: 16px; margin-bottom: 28px">
+<img src="assets/6d7281a2e9682cf8f16a34c90b9ba7cc.png" alt="Vera logo inside a glowing orb" style="width: 76px; height: 76px; border-radius: 50%">
+<span style="font-size: 14px; font-weight: 600; letter-spacing: 0.14em; text-transform: uppercase; color: #C9C4F0">Case study · UX/UI · March 2025</span>
+</div>
+<h1 style="margin: 0 0 10px; font-weight: 700; font-size: 88px; line-height: 0.95; letter-spacing: -0.03em; color: #FFFFFF">Vera</h1>
+<p style="margin: 0 0 22px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 34px; line-height: 1.15; letter-spacing: -0.02em; color: #ADFF71">Vera-fy it.</p>
+<p style="margin: 0 0 32px; font-size: 21px; line-height: 1.5; max-width: 36ch; color: #E2DFF5">An AI detection tool with a personality. It checks videos, images, audio, documents, links and text, then explains why something looks AI-made, wherever that content shows up.</p>
+<div style="display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 12px; max-width: 540px">
+<div style="background: #F3B440; color: #1B1A2E; border-radius: 18px; padding: 14px 16px"><p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase">My role</p><p style="margin: 2px 0 0; font-size: 15px; line-height: 1.4">Product designer · mobile app, iOS integrations, web homepage</p></div>
+<div style="background: #33AE9C; color: #0F1F1C; border-radius: 18px; padding: 14px 16px"><p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase">Team</p><p style="margin: 2px 0 0; font-size: 15px; line-height: 1.4">3 designers</p></div>
+<div style="background: #E08AD1; color: #2A1027; border-radius: 18px; padding: 14px 16px"><p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase">Timeline</p><p style="margin: 2px 0 0; font-size: 15px; line-height: 1.4">One week · March 1–8, 2025</p></div>
+<div style="background: #9E8FE2; color: #17122E; border-radius: 18px; padding: 14px 16px"><p style="margin: 0; font-size: 13px; font-weight: 700; letter-spacing: 0.08em; text-transform: uppercase">Context</p><p style="margin: 2px 0 0; font-size: 15px; line-height: 1.4">UMD Info Challenge · Mindpetal prompt</p></div>
+</div>
+</div>
+<div style="flex: 1 1 400px; min-width: 0; position: relative; display: flex; justify-content: center; padding: 20px 0">
+<div style="width: 280px; max-width: 80%; border-radius: 40px; border: 8px solid #0C0C16; overflow: hidden; box-shadow: 0 30px 80px rgba(120,40,140,0.45), 0 0 0 1px rgba(255,255,255,0.08); transform: rotate(-4deg)">
+<img src="assets/4daad3a6775113fed909a0bf5aa250e5.jpg" alt="Vera mobile home screen: What can I Vera-fy today?" style="display: block; width: 600%; max-width: none; height: auto; transform: translateX(-16.6667%)">
+</div>
+<span style="position: absolute; left: 4%; top: 12%; background: #F3B440; color: #1B1A2E; font-weight: 700; font-size: 17px; border-radius: 14px; padding: 8px 16px; --r: -8deg; animation: vr-float 3.4s ease-in-out infinite">Video</span>
+<span style="position: absolute; right: 2%; top: 26%; background: #33AE9C; color: #0F1F1C; font-weight: 700; font-size: 17px; border-radius: 14px; padding: 8px 16px; --r: 7deg; animation: vr-float 3s ease-in-out infinite .5s">Image</span>
+<span style="position: absolute; left: 0; bottom: 22%; background: #E08AD1; color: #2A1027; font-weight: 700; font-size: 17px; border-radius: 14px; padding: 8px 16px; --r: 6deg; animation: vr-float 3.8s ease-in-out infinite 1s">Audio</span>
+<span style="position: absolute; right: 6%; bottom: 10%; background: #ADFF71; color: #18260C; font-weight: 700; font-size: 17px; border-radius: 14px; padding: 8px 16px; --r: -5deg; animation: vr-float 3.2s ease-in-out infinite 1.4s">Text</span>
+</div>
+</div>
+</section>
+
+<!-- BRIEF -->
+<section style="padding: 56px 24px">
+<div style="max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 48px">
+<div style="flex: 1 1 340px; min-width: 0">
+<p style="margin: 0 0 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ADFF71">The big question</p>
+<h2 style="margin: 0; font-weight: 600; font-size: 36px; line-height: 1.2; color: #FFFFFF">How might we increase AI literacy for the general public so that it is easily accessible for all?</h2>
+</div>
+<div style="flex: 1.3 1 420px; min-width: 0">
+<p style="margin: 0 0 18px"><strong style="color: #FFFFFF">The problem.</strong> AI-generated text, images, voices and video are getting harder to tell apart from human work, and misinformation spreads fastest in exactly the places people trust most: their feeds, their messages, their phone calls.</p>
+<p style="margin: 0 0 18px"><strong style="color: #FFFFFF">The brief.</strong> Mindpetal challenged us at UMD's Info Challenge to make AI recognition fun, creative and accessible, whatever someone's tech literacy. We had one week.</p>
+<div style="background: rgba(173,255,113,0.12); border: 1px solid rgba(173,255,113,0.45); border-radius: 20px; padding: 20px 24px">
+<p style="margin: 0"><strong style="color: #ADFF71">My part.</strong> I designed Vera's mobile app and its iOS integrations, an iMessage app for checking suspicious texts and a voicemail check from Control Center, and helped design the web homepage.</p>
+</div>
+</div>
+</div>
+</section>
+
+<!-- RESEARCH -->
+<section style="padding: 56px 24px">
+<div style="max-width: 1120px; margin: 0 auto">
+<p style="margin: 0 0 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ADFF71">Research</p>
+<h2 style="margin: 0 0 14px; font-weight: 600; font-size: 42px; line-height: 1.15; color: #FFFFFF">Two people, very different reasons to doubt</h2>
+<p style="margin: 0 0 36px; max-width: 66ch; color: #D9D5F0">We looked at how everyday people run into AI content and deliberately drew from opposite ends: an older user and a young creative. Both became personas that guided every screen.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 24px; margin-bottom: 48px">
+<div style="background: #F7F5FF; color: #1B1A2E; border-radius: 28px; padding: 28px">
+<div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px">
+<div aria-hidden="true" style="width: 56px; height: 56px; border-radius: 50%; background: #F3B440; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 22px">KJ</div>
+<div><p style="margin: 0; font-weight: 700; font-size: 22px; line-height: 1.2">Karen Johnson</p><p style="margin: 0; font-size: 15px; color: #4A4766">60 · retired school teacher · suburban Ohio</p></div>
+</div>
+<p style="margin: 0 0 12px; font-size: 16px">Keeps up with family and news on Facebook and YouTube, but struggles to tell fake news, clickbait and manipulated images from the real thing.</p>
+<p style="margin: 0; font-size: 16px"><strong>Needs:</strong> a simple, reliable way to check what friends forward her, with clear explanations instead of jargon.</p>
+</div>
+<div style="background: #F7F5FF; color: #1B1A2E; border-radius: 28px; padding: 28px">
+<div style="display: flex; align-items: center; gap: 14px; margin-bottom: 14px">
+<div aria-hidden="true" style="width: 56px; height: 56px; border-radius: 50%; background: #E08AD1; display: flex; align-items: center; justify-content: center; font-weight: 700; font-size: 22px">AR</div>
+<div><p style="margin: 0; font-weight: 700; font-size: 22px; line-height: 1.2">Alex Rivera</p><p style="margin: 0; font-size: 15px; color: #4A4766">21 · art student · Brooklyn, NY</p></div>
+</div>
+<p style="margin: 0 0 12px; font-size: 16px">Comfortable in Procreate and Adobe, active in online art communities, and uneasy about AI art that mimics real artists' styles.</p>
+<p style="margin: 0; font-size: 16px"><strong>Needs:</strong> a trustworthy check on whether a piece is human-made, and a way to learn about AI without feeling overwhelmed.</p>
+</div>
+</div>
+<h3 style="margin: 0 0 18px; font-weight: 600; font-size: 26px; color: #FFFFFF">What existing tools were missing</h3>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 16px; margin-bottom: 20px">
+<div style="border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; padding: 20px; background: rgba(255,255,255,0.05)"><p style="margin: 0 0 6px; font-weight: 700; font-size: 18px; color: #FFFFFF">ZeroGPT</p><p style="margin: 0; font-size: 15px; color: #D9D5F0">Simple, accurate and handles multiple files, but explains little and is mostly text-only.</p></div>
+<div style="border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; padding: 20px; background: rgba(255,255,255,0.05)"><p style="margin: 0 0 6px; font-weight: 700; font-size: 18px; color: #FFFFFF">Undetectable AI</p><p style="margin: 0; font-size: 15px; color: #D9D5F0">Flexible, with text-to-speech, but slow to update and no image support.</p></div>
+<div style="border: 1px solid rgba(255,255,255,0.18); border-radius: 20px; padding: 20px; background: rgba(255,255,255,0.05)"><p style="margin: 0 0 6px; font-weight: 700; font-size: 18px; color: #FFFFFF">Google Lens</p><p style="margin: 0; font-size: 15px; color: #D9D5F0">Powerful image recognition and sources, but never says whether an image is AI-generated.</p></div>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<span style="background: #E74629; color: #FFFFFF; font-weight: 600; font-size: 15px; border-radius: 999px; padding: 8px 16px">No tool covered every media type</span>
+<span style="background: #9E8FE2; color: #17122E; font-weight: 600; font-size: 15px; border-radius: 999px; padding: 8px 16px">Interfaces felt clinical</span>
+<span style="background: #33AE9C; color: #0F1F1C; font-weight: 600; font-size: 15px; border-radius: 999px; padding: 8px 16px">Nothing worked across platforms</span>
+<span style="background: #F3B440; color: #1B1A2E; font-weight: 600; font-size: 15px; border-radius: 999px; padding: 8px 16px">Little effort to teach</span>
+</div>
+</div>
+</section>
+
+<!-- PRINCIPLES -->
+<section style="padding: 56px 24px">
+<div style="max-width: 1120px; margin: 0 auto">
+<p style="margin: 0 0 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ADFF71">Design principles</p>
+<h2 style="margin: 0 0 32px; font-weight: 600; font-size: 42px; line-height: 1.15; color: #FFFFFF">What I designed against</h2>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(260px, 1fr)); gap: 20px">
+<div style="background: #ADFF71; color: #18260C; border-radius: 28px; padding: 28px; transform: rotate(-1.5deg)"><p style="margin: 0 0 6px; font-weight: 700; font-size: 44px; line-height: 1">01</p><p style="margin: 0 0 6px; font-weight: 700; font-size: 22px">Explain, don't just judge</p><p style="margin: 0; font-size: 16px">A percentage alone teaches nothing. Every verdict comes with the why and the evidence.</p></div>
+<div style="background: #E08AD1; color: #2A1027; border-radius: 28px; padding: 28px; transform: rotate(1deg)"><p style="margin: 0 0 6px; font-weight: 700; font-size: 44px; line-height: 1">02</p><p style="margin: 0 0 6px; font-weight: 700; font-size: 22px">Go where the content arrives</p><p style="margin: 0; font-size: 16px">Karen won't open a new app to check a text. Vera should already be in Messages and on her calls.</p></div>
+<div style="background: #F3B440; color: #1B1A2E; border-radius: 28px; padding: 28px; transform: rotate(-0.8deg)"><p style="margin: 0 0 6px; font-weight: 700; font-size: 44px; line-height: 1">03</p><p style="margin: 0 0 6px; font-weight: 700; font-size: 22px">An AI with personality</p><p style="margin: 0; font-size: 16px">Bright, friendly and a little playful, so checking feels fun and people come back.</p></div>
+</div>
+</div>
+</section>
+
+<!-- SKETCHES -->
+<section style="padding: 56px 24px">
+<div style="max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 40px; align-items: center">
+<div style="flex: 1 1 320px; min-width: 0">
+<p style="margin: 0 0 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ADFF71">Sketching</p>
+<h2 style="margin: 0 0 16px; font-weight: 600; font-size: 38px; line-height: 1.15; color: #FFFFFF">From a search bar to clickable stickers</h2>
+<p style="margin: 0 0 14px; color: #D9D5F0">Our first sketch was a single "detect AI" bar with a plus button that revealed media types. It was simple, but hid what Vera could do.</p>
+<p style="margin: 0; color: #D9D5F0">The idea that stuck was turning each media type into a big, animated box, "like stickers, but clickable." Those boxes became the colored tiles that tie every Vera platform together.</p>
+</div>
+<figure style="flex: 1.4 1 460px; min-width: 0; margin: 0">
+<img src="assets/419cd77cf84b5db1baf65e3672fbd91b.jpg" alt="Notebook sketches: a simple Detect AI search bar, a grid of media boxes, and sticker-like clickable shapes" style="display: block; width: 100%; height: auto; border-radius: 24px; transform: rotate(1deg); box-shadow: 0 20px 50px rgba(0,0,0,0.4)">
+<figcaption style="margin-top: 14px; font-size: 14px; color: #B9B5D9">Early notebook sketches from the team.</figcaption>
+</figure>
+</div>
+</section>
+
+<!-- TOUR -->
+<section style="padding: 64px 24px">
+<div style="max-width: 1160px; margin: 0 auto">
+<div style="text-align: center; margin-bottom: 44px">
+<p style="margin: 0 0 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ADFF71">My screens · interactive walkthrough</p>
+<h2 style="margin: 0 0 10px; font-weight: 700; font-size: 48px; line-height: 1.1; color: #FFFFFF">Try Vera on your phone</h2>
+<p style="margin: 0 auto; max-width: 56ch; color: #D9D5F0">Pick a scenario, then use Vera the way Karen and Alex would: tap the glowing dot on each screen to take the next step.</p>
+</div>
+<div role="tablist" aria-label="Choose a walkthrough" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 40px">
+<sc-for list="{{tabs}}" as="tb" hint-placeholder-count="3">
+<button type="button" role="tab" aria-selected="{{tb.selected}}" onClick="{{tb.pick}}" style="{{tb.style}}">{{tb.label}}</button>
+</sc-for>
+</div>
+<div style="display: flex; flex-wrap: wrap; gap: 56px; align-items: center; justify-content: center">
+<div style="flex: 0 0 auto; width: 300px; max-width: 100%">
+<div style="border: 8px solid #0C0C16; border-radius: 46px; overflow: hidden; background: #151522; box-shadow: 0 30px 80px rgba(120,40,140,0.4), 0 0 0 1px rgba(255,255,255,0.08)">
+<div style="position: relative; overflow: hidden">
+<img src="{{src}}" alt="{{alt}}" style="{{imgStyle}}">
+<sc-if value="{{showHot}}" hint-placeholder-val="{{true}}">
+<button type="button" onClick="{{advance}}" aria-label="{{hint}}" style="{{hotStyle}}"><span aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 48px; height: 48px; border-radius: 50%; border: 3px solid #ADFF71; animation: vr-ping 1.4s ease-out infinite"></span></button>
+</sc-if>
+</div>
+</div>
+</div>
+<div style="flex: 1 1 340px; max-width: 460px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<span style="{{tagStyle}}">{{tag}}</span>
+<h3 style="margin: 0; font-weight: 700; font-size: 34px; line-height: 1.1; color: #FFFFFF">{{title}}</h3>
+<p style="margin: 0; font-size: 17px; color: #D9D5F0">{{blurb}}</p>
+<div aria-live="polite" style="margin-top: 10px; background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.16); border-radius: 24px; padding: 22px 24px; min-height: 196px; box-sizing: border-box">
+<p style="margin: 0 0 6px; font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #C9C4F0">Step {{stepNum}} of {{stepCount}}</p>
+<p style="margin: 0 0 8px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 24px; line-height: 1.2; letter-spacing: -0.02em; color: #FFFFFF">{{stepTitle}}</p>
+<p style="margin: 0 0 14px; font-size: 16px; color: #D9D5F0">{{stepDesc}}</p>
+<sc-if value="{{showHot}}" hint-placeholder-val="{{true}}">
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: #ADFF71"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #ADFF71"></span>{{hint}}</p>
+</sc-if>
+<sc-if value="{{isAuto}}" hint-placeholder-val="{{false}}">
+<p style="margin: 0; font-weight: 600; font-size: 15px; color: #E08AD1">Hang on, Vera is working…</p>
+</sc-if>
+<sc-if value="{{isEnd}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" onClick="{{restart}}" style="border: 0; border-radius: 999px; background: #ADFF71; color: #18260C; font-family: inherit; font-weight: 700; font-size: 15px; padding: 12px 20px; cursor: pointer">Try it again</button>
+<sc-if value="{{hasNextFlow}}" hint-placeholder-val="{{true}}">
+<button type="button" onClick="{{nextFlow}}" style="border: 1.5px solid rgba(255,255,255,0.5); border-radius: 999px; background: transparent; color: #FFFFFF; font-family: inherit; font-weight: 600; font-size: 15px; padding: 12px 20px; cursor: pointer">Next: {{nextFlowLabel}}</button>
+</sc-if>
+</div>
+</sc-if>
+</div>
+<div style="display: flex; align-items: center; gap: 14px">
+<div aria-hidden="true" style="display: flex; gap: 6px; flex: 1 1 auto">
+<sc-for list="{{dots}}" as="d" hint-placeholder-count="5">
+<span style="{{d.style}}"></span>
+</sc-for>
+</div>
+<button type="button" onClick="{{back}}" aria-label="Previous step" style="width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.4); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></button>
+<button type="button" onClick="{{skip}}" aria-label="Skip to next step" style="width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.4); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- DECISIONS -->
+<section style="padding: 56px 24px">
+<div style="max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 48px; align-items: flex-start">
+<div style="flex: 0 0 auto; width: 300px; max-width: 100%; margin: 0 auto">
+<img src="assets/10631096151cb0629dcd6bf180780a28.jpg" alt="Result screen: This content is 90% AI, with a Why explanation and metadata tags" style="display: block; width: 100%; height: auto; border-radius: 34px; border: 7px solid #0C0C16; box-shadow: 0 24px 60px rgba(0,0,0,0.45)">
+</div>
+<div style="flex: 1 1 420px; min-width: 0">
+<p style="margin: 0 0 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ADFF71">Key decisions</p>
+<h2 style="margin: 0 0 28px; font-weight: 600; font-size: 38px; line-height: 1.15; color: #FFFFFF">Designing a verdict people can learn from</h2>
+<div style="display: flex; flex-direction: column; gap: 22px">
+<div style="display: flex; gap: 16px"><span aria-hidden="true" style="flex: 0 0 14px; height: 14px; margin-top: 8px; border-radius: 4px; background: #ADFF71"></span><div><p style="margin: 0 0 4px; font-weight: 700; font-size: 20px; color: #FFFFFF">Score, reason, evidence</p><p style="margin: 0; font-size: 16px; color: #D9D5F0">Results lead with a plain verdict ("This content is 90% AI"), then a Why section in everyday language, then metadata tags: codec, model, created and modified dates, and whether GPS data exists.</p></div></div>
+<div style="display: flex; gap: 16px"><span aria-hidden="true" style="flex: 0 0 14px; height: 14px; margin-top: 8px; border-radius: 4px; background: #F3B440"></span><div><p style="margin: 0 0 4px; font-weight: 700; font-size: 20px; color: #FFFFFF">One color per media type, everywhere</p><p style="margin: 0; font-size: 16px; color: #D9D5F0">Video is always yellow, audio always pink, text always lime. The same six tiles appear in the app, inside Messages and on the web, so nothing has to be relearned.</p></div></div>
+<div style="display: flex; gap: 16px"><span aria-hidden="true" style="flex: 0 0 14px; height: 14px; margin-top: 8px; border-radius: 4px; background: #E08AD1"></span><div><p style="margin: 0 0 4px; font-weight: 700; font-size: 20px; color: #FFFFFF">Checks that come to you</p><p style="margin: 0; font-size: 16px; color: #D9D5F0">For Karen, the riskiest content arrives as a heartfelt text from a stranger or a voicemail in a cloned politician's voice asking for money. The iMessage app and Control Center shortcut check those in place.</p></div></div>
+<div style="display: flex; gap: 16px"><span aria-hidden="true" style="flex: 0 0 14px; height: 14px; margin-top: 8px; border-radius: 4px; background: #9E8FE2"></span><div><p style="margin: 0 0 4px; font-weight: 700; font-size: 20px; color: #FFFFFF">Waiting that feels alive</p><p style="margin: 0; font-size: 16px; color: #D9D5F0">While Vera works, a glowing orb pulses with the file name above it. It gives the AI a presence and makes a few seconds of analysis feel intentional.</p></div></div>
+<div style="display: flex; gap: 16px"><span aria-hidden="true" style="flex: 0 0 14px; height: 14px; margin-top: 8px; border-radius: 4px; background: #33AE9C"></span><div><p style="margin: 0 0 4px; font-weight: 700; font-size: 20px; color: #FFFFFF">A greeting and your recents</p><p style="margin: 0; font-size: 16px; color: #D9D5F0">"Good afternoon, Alex! What can I Vera-fy today?" makes the home screen feel personal, and recents let people return to past checks.</p></div></div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- WEB -->
+<section style="padding: 64px 24px">
+<div style="max-width: 1120px; margin: 0 auto">
+<div style="text-align: center; margin-bottom: 36px">
+<p style="margin: 0 0 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ADFF71">On the desktop · interactive walkthrough</p>
+<h2 style="margin: 0 0 10px; font-weight: 700; font-size: 48px; line-height: 1.1; color: #FFFFFF">Try Vera on the web</h2>
+<p style="margin: 0 auto; max-width: 58ch; color: #D9D5F0">The same tiles, scaled up for a big screen. Watch the web prototype in action, then click through the Chrome extension yourself.</p>
+</div>
+<div role="tablist" aria-label="Choose a desktop walkthrough" style="display: flex; flex-wrap: wrap; justify-content: center; gap: 10px; margin-bottom: 36px">
+<sc-for list="{{dTabs}}" as="tb" hint-placeholder-count="2">
+<button type="button" role="tab" aria-selected="{{tb.selected}}" onClick="{{tb.pick}}" style="{{tb.style}}">{{tb.label}}</button>
+</sc-for>
+</div>
+<div style="max-width: 880px; margin: 0 auto">
+<div style="background: #0C0C16; border-radius: 22px; padding: 12px 12px 14px; box-shadow: 0 30px 80px rgba(120,40,140,0.35), 0 0 0 1px rgba(255,255,255,0.08)">
+<sc-if value="{{dShowBar}}" hint-placeholder-val="{{true}}">
+<div aria-hidden="true" style="display: flex; align-items: center; gap: 7px; padding: 2px 6px 10px">
+<span style="width: 11px; height: 11px; border-radius: 50%; background: #E74629"></span>
+<span style="width: 11px; height: 11px; border-radius: 50%; background: #F3B440"></span>
+<span style="width: 11px; height: 11px; border-radius: 50%; background: #33AE9C"></span>
+<span style="margin-left: 14px; flex: 0 1 280px; height: 22px; border-radius: 999px; background: rgba(255,255,255,0.08)"></span>
+</div>
+</sc-if>
+<div style="position: relative; overflow: hidden; border-radius: 10px">
+<sc-if value="{{dIsVideo}}" hint-placeholder-val="{{true}}">
+<video src="assets/777d96eaf3fa4f311e2da6cd88f5f701.mp4" poster="assets/654026865b54e106424b4000f82920b6.jpg" autoplay="" muted="" loop="" playsinline="" controls="" aria-label="Screen recording of the Vera web prototype: cards light up on hover, text is pasted and submitted, a gradient progress bar plays, and the result shows 100% AI" style="display: block; width: 100%; height: auto"></video>
+</sc-if>
+<sc-if value="{{dNotVideo}}" hint-placeholder-val="{{false}}">
+<img src="{{dSrc}}" alt="{{dAlt}}" style="{{dImgStyle}}">
+</sc-if>
+<sc-if value="{{dShowHot}}" hint-placeholder-val="{{false}}">
+<button type="button" onClick="{{dAdvance}}" aria-label="{{dHint}}" style="{{dHotStyle}}"><span aria-hidden="true" style="position: absolute; left: 50%; top: 50%; width: 48px; height: 48px; border-radius: 50%; border: 3px solid #ADFF71; animation: vr-ping 1.4s ease-out infinite"></span></button>
+</sc-if>
+</div>
+</div>
+<div aria-hidden="true" style="width: 108%; margin-left: -4%; height: 14px; border-radius: 0 0 18px 18px; background: linear-gradient(180deg, #3A3856, #24233A)"></div>
+<div style="display: flex; flex-wrap: wrap; gap: 24px; margin-top: 32px; align-items: flex-start">
+<div aria-live="polite" style="flex: 1 1 420px; min-width: 0">
+<div style="display: flex; flex-wrap: wrap; align-items: center; gap: 10px; margin-bottom: 10px">
+<span style="{{dTagStyle}}">{{dTag}}</span>
+<sc-if value="{{dNotVideo}}" hint-placeholder-val="{{false}}">
+<span style="font-size: 13px; font-weight: 700; letter-spacing: 0.12em; text-transform: uppercase; color: #C9C4F0">Step {{dStepNum}} of {{dStepCount}}</span>
+</sc-if>
+</div>
+<p style="margin: 0 0 6px; font-family: 'Space Grotesk', sans-serif; font-weight: 600; font-size: 26px; line-height: 1.2; letter-spacing: -0.02em; color: #FFFFFF">{{dStepTitle}}</p>
+<p style="margin: 0 0 12px; font-size: 16px; color: #D9D5F0">{{dStepDesc}}</p>
+<sc-if value="{{dShowHot}}" hint-placeholder-val="{{true}}">
+<p style="margin: 0; display: inline-flex; align-items: center; gap: 8px; font-weight: 600; font-size: 15px; color: #ADFF71"><span aria-hidden="true" style="width: 10px; height: 10px; border-radius: 50%; background: #ADFF71"></span>{{dHint}}</p>
+</sc-if>
+<sc-if value="{{dIsEnd}}" hint-placeholder-val="{{false}}">
+<div style="display: flex; flex-wrap: wrap; gap: 10px">
+<button type="button" onClick="{{dRestart}}" style="border: 0; border-radius: 999px; background: #ADFF71; color: #18260C; font-family: inherit; font-weight: 700; font-size: 15px; padding: 12px 20px; cursor: pointer">Try it again</button>
+<sc-if value="{{dHasNext}}" hint-placeholder-val="{{true}}">
+<button type="button" onClick="{{dNextFlow}}" style="border: 1.5px solid rgba(255,255,255,0.5); border-radius: 999px; background: transparent; color: #FFFFFF; font-family: inherit; font-weight: 600; font-size: 15px; padding: 12px 20px; cursor: pointer">Next: {{dNextLabel}}</button>
+</sc-if>
+</div>
+</sc-if>
+<sc-if value="{{dIsVideo}}" hint-placeholder-val="{{true}}">
+<button type="button" onClick="{{dNextFlow}}" style="border: 0; border-radius: 999px; background: #ADFF71; color: #18260C; font-family: inherit; font-weight: 700; font-size: 15px; padding: 12px 20px; cursor: pointer">Next: {{dNextLabel}}</button>
+</sc-if>
+</div>
+<div style="flex: 0 1 260px; min-width: 0; display: flex; flex-direction: column; gap: 14px">
+<sc-if value="{{dNotVideo}}" hint-placeholder-val="{{false}}">
+<div aria-hidden="true" style="display: flex; gap: 6px">
+<sc-for list="{{dDots}}" as="d" hint-placeholder-count="4">
+<span style="{{d.style}}"></span>
+</sc-for>
+</div>
+<div style="display: flex; gap: 10px">
+<button type="button" onClick="{{dBack}}" aria-label="Previous step" style="width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.4); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M15 5l-7 7 7 7"></path></svg></button>
+<button type="button" onClick="{{dSkip}}" aria-label="Skip to next step" style="width: 44px; height: 44px; border-radius: 50%; border: 1.5px solid rgba(255,255,255,0.4); background: transparent; cursor: pointer; display: flex; align-items: center; justify-content: center; padding: 0"><svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="#FFFFFF" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 5l7 7-7 7"></path></svg></button>
+</div>
+</sc-if>
+<p style="margin: 0; font-size: 14px; color: #B9B5D9">{{dCredit}}</p>
+</div>
+</div>
+</div>
+</div>
+</section>
+
+<!-- IDENTITY -->
+<section style="padding: 56px 24px">
+<div style="max-width: 1120px; margin: 0 auto; background: #F7F5FF; color: #1B1A2E; border-radius: 32px; padding: 40px">
+<p style="margin: 0 0 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #5A4FA0">Visual identity (shared)</p>
+<h2 style="margin: 0 0 12px; font-weight: 700; font-size: 36px; line-height: 1.15">Futuristic, but friendly</h2>
+<p style="margin: 0 0 28px; max-width: 62ch; font-size: 17px; color: #3A3756">Our moodboard pointed to colorful gradients and an AI with personality. A deep night-sky gradient lets six saturated tiles pop, with magenta and lime glows giving Vera its glow.</p>
+<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(130px, 1fr)); gap: 12px; margin-bottom: 14px">
+<div style="background: #F3B440; border-radius: 18px; padding: 52px 14px 12px; font-weight: 600; font-size: 14px">Video<br>#F3B440</div>
+<div style="background: #33AE9C; border-radius: 18px; padding: 52px 14px 12px; font-weight: 600; font-size: 14px">Image<br>#33AE9C</div>
+<div style="background: #E08AD1; border-radius: 18px; padding: 52px 14px 12px; font-weight: 600; font-size: 14px">Audio<br>#E08AD1</div>
+<div style="background: #9E8FE2; border-radius: 18px; padding: 52px 14px 12px; font-weight: 600; font-size: 14px">Doc<br>#9E8FE2</div>
+<div style="background: #E74629; color: #FFFFFF; border-radius: 18px; padding: 52px 14px 12px; font-weight: 600; font-size: 14px">URL<br>#E74629</div>
+<div style="background: #ADFF71; border-radius: 18px; padding: 52px 14px 12px; font-weight: 600; font-size: 14px">Text<br>#ADFF71</div>
+</div>
+<div style="height: 72px; border-radius: 18px; background: linear-gradient(180deg, #151522 0%, #535184 100%); display: flex; align-items: center; justify-content: space-between; padding: 0 20px; color: #FFFFFF; font-weight: 600; font-size: 14px"><span>#151522</span><span>Night-sky gradient</span><span>#535184</span></div>
+</div>
+</section>
+
+<!-- REFLECTION -->
+<section style="padding: 64px 24px 96px">
+<div style="max-width: 1120px; margin: 0 auto; display: flex; flex-wrap: wrap; gap: 48px">
+<div style="flex: 1 1 320px; min-width: 0">
+<p style="margin: 0 0 10px; font-size: 14px; font-weight: 700; letter-spacing: 0.14em; text-transform: uppercase; color: #ADFF71">Reflection</p>
+<h2 style="margin: 0; font-weight: 600; font-size: 40px; line-height: 1.15; color: #FFFFFF">What a week with Vera taught me</h2>
+</div>
+<div style="flex: 1.4 1 440px; min-width: 0; display: flex; flex-direction: column; gap: 18px">
+<p style="margin: 0"><strong style="color: #FFFFFF">Platform is a design decision.</strong> The most useful screens weren't in the app at all. Putting Vera inside Messages and Control Center meant designing for the moment of doubt, not the moment someone remembers to open a tool.</p>
+<p style="margin: 0"><strong style="color: #FFFFFF">Literacy beats a number.</strong> Writing the Why section changed how I thought about the result screen: the goal is for people to recognize AI on their own next time.</p>
+<p style="margin: 0"><strong style="color: #FFFFFF">Next steps.</strong> Test the iMessage and voicemail flows with older users like Karen, and design what happens when Vera isn't sure, so a middling score still helps someone decide.</p>
+<div style="background: rgba(255,255,255,0.06); border: 1px solid rgba(255,255,255,0.16); border-radius: 22px; padding: 18px 22px; margin-top: 8px">
+<p style="margin: 0 0 10px; font-weight: 600; font-size: 16px; color: #C9C4F0">The team</p>
+<div style="display: flex; flex-wrap: wrap; gap: 10px; font-size: 16px; font-weight: 600">
+<span style="background: #ADFF71; color: #18260C; border-radius: 999px; padding: 4px 16px">Christine Gomes (me!)</span>
+<span style="background: #E08AD1; color: #2A1027; border-radius: 999px; padding: 4px 16px">Aleena Waseem</span>
+<span style="background: #F3B440; color: #1B1A2E; border-radius: 999px; padding: 4px 16px">Pritha Zaheen</span>
+</div>
+</div>
+</div>
+</div>
+</section>
+</main>
+</template>
+<div id="dc-root"></div>
+<script type="text/plain" id="dc-logic">
+class Component extends DCLogic {
+constructor(props) {
+super(props);
+this.state = { flow: 0, step: 0, dflow: 0, dstep: 0 };
+}
+componentWillUnmount() { if (this.timer) clearTimeout(this.timer); if (this.dtimer) clearTimeout(this.dtimer); }
+dgo(flow, step) {
+var st = this.dflows()[flow].steps, n = st.length;
+if (step < 0) step = 0;
+if (step > n - 1) step = n - 1;
+if (this.dtimer) { clearTimeout(this.dtimer); this.dtimer = null; }
+this.setState({ dflow: flow, dstep: step });
+if (st[step].auto) {
+var self = this;
+this.dtimer = setTimeout(function () { self.dgo(flow, step + 1); }, st[step].auto);
+}
+}
+dflows() {
+return [
+{ label: 'Web homepage', tag: 'Web · helped design', tagBg: '#ADFF71', tagFg: '#18260C', src: 'assets/9b9540abbb651e303c92619c6ffef00a.jpg', video: true, bar: true, credit: 'I helped design the web homepage with the team.',
+steps: [
+{ i: 0, t: 'Upload something…', d: 'The homepage leads with five big, illustrated cards that light up on hover, and a text bar at the bottom for quick pastes. Paste an essay and submit, a progress pill sweeps from lime to magenta, and the verdict drops in: "This content is 100% AI GPT," with a numbered list of reasons in plain language.' }
+] },
+{ label: 'Chrome extension', tag: 'Chrome extension · team', tagBg: '#9E8FE2', tagFg: '#17122E', src: 'assets/2e989df5125f3c33fc914fa00d9531fa.jpg', frames: 6, bar: false, credit: 'The Chrome extension was designed by my teammates.',
+steps: [
+{ i: 0, t: 'A viral photo', d: 'The Pope in a designer puffer coat is all over X. Is it real? Vera floats at the edge of the page as a small bubble.', hint: 'Click the Vera bubble', hot: [97.5, 43.3] },
+{ i: 1, t: 'Choose what to check', d: 'The bubble fans out into the same media types as the app: text, image, audio, video and document.', hint: 'Choose Image', hot: [97.5, 57.7] },
+{ i: 3, t: 'Point at it', d: 'Instead of uploading anything, you hover over the image on the page you are already on.', hint: 'Hover over the photo', hot: [47, 60] },
+{ i: 4, t: 'Vera-fying…', d: 'A lime panel slides in while Vera checks the image, without leaving the feed.', auto: 2400 },
+{ i: 5, t: 'Vera-fied: likely AI', d: 'The verdict comes with context: the image isn’t real, it was made with an AI image generator and shared on Reddit before it went viral. A Learn more button goes deeper.', end: true }
+] }
+];
+}
+desk() {
+var F = this.dflows(), self = this;
+var fi = this.state.dflow, si = this.state.dstep;
+var f = F[fi], s = f.steps[si], n = f.steps.length;
+var hot = s.hot || [50, 50];
+return {
+dTabs: F.map(function (x, k) {
+var on = k === fi;
+return { label: x.label, selected: on ? 'true' : 'false',
+style: 'font-family:inherit;font-weight:600;font-size:16px;border-radius:999px;padding:12px 22px;cursor:pointer;' + (on ? 'border:0;background:' + x.tagBg + ';color:' + x.tagFg : 'border:1.5px solid rgba(255,255,255,0.35);background:transparent;color:#FFFFFF'),
+pick: function () { self.dgo(k, 0); } };
+}),
+dDots: f.steps.map(function (x, j) {
+return { style: 'display:block;height:6px;border-radius:3px;flex:1 1 0;transition:background .3s;background:' + (j <= si ? f.tagBg : 'rgba(255,255,255,0.22)') };
+}),
+dIsVideo: !!f.video, dNotVideo: !f.video,
+dSrc: f.src, dShowBar: f.bar, dTag: f.tag, dCredit: f.credit,
+dAlt: f.label + ', step ' + (si + 1) + ': ' + s.t,
+dTagStyle: 'font-weight:700;font-size:14px;letter-spacing:.04em;border-radius:999px;padding:5px 14px;background:' + f.tagBg + ';color:' + f.tagFg,
+dImgStyle: 'display:block;max-width:none;height:auto;width:' + ((f.frames || n) * 100) + '%;transform:translateX(-' + (s.i * 100 / (f.frames || n)).toFixed(4) + '%);transition:transform .5s cubic-bezier(.4,0,.2,1)',
+dHotStyle: 'position:absolute;left:' + hot[0] + '%;top:' + hot[1] + '%;width:44px;height:44px;margin:-22px 0 0 -22px;border-radius:50%;border:3px solid #FFFFFF;background:rgba(173,255,113,0.45);box-shadow:0 0 0 4px rgba(21,21,34,0.35);cursor:pointer;padding:0',
+dShowHot: !!s.hot, dIsEnd: !!s.end, dHint: s.hint || '',
+dStepNum: si + 1, dStepCount: n, dStepTitle: s.t, dStepDesc: s.d,
+dHasNext: fi < F.length - 1, dNextLabel: fi < F.length - 1 ? F[fi + 1].label : '',
+dAdvance: function () { self.dgo(fi, si + 1); },
+dSkip: function () { self.dgo(fi, si + 1); },
+dBack: function () { self.dgo(fi, si - 1); },
+dRestart: function () { self.dgo(fi, 0); },
+dNextFlow: function () { self.dgo(fi + 1, 0); }
+};
+}
+go(flow, step) {
+var F = this.flows();
+var n = F[flow].steps.length;
+if (step < 0) step = 0;
+if (step > n - 1) step = n - 1;
+if (this.timer) { clearTimeout(this.timer); this.timer = null; }
+this.setState({ flow: flow, step: step });
+var s = F[flow].steps[step];
+if (s.auto) {
+var self = this;
+this.timer = setTimeout(function () { self.go(flow, step + 1); }, s.auto);
+}
+}
+flows() {
+return [
+{ label: 'The Vera app', title: 'Checking a video in the app', tag: 'Mobile app', tagBg: '#F3B440', tagFg: '#1B1A2E', src: 'assets/4daad3a6775113fed909a0bf5aa250e5.jpg', n: 6,
+blurb: 'Alex saw a clip of a celebrity that felt a little off. They open Vera to find out.',
+steps: [
+{ i: 1, t: 'Open Vera', d: 'The home screen greets them by name and lays out six things Vera can check, one colored tile each.', hint: 'Tap the Video tile', hot: [30, 32.6] },
+{ i: 2, t: 'Choose the clip', d: 'Vera opens the familiar iOS photo picker, so there is nothing new to learn.', hint: 'Pick the video of the woman', hot: [20.5, 43.4] },
+{ i: 3, t: 'Confirm the pick', d: 'One video selected. Vera can take up to four at a time.', hint: 'Tap Add', hot: [88, 14.5] },
+{ i: 4, t: 'Vera-fying…', d: 'A glowing orb pulses under the file name while Vera analyzes it, so the wait feels alive.', auto: 2600 },
+{ i: 5, t: 'The verdict', d: '"This content is 90% AI," followed by a plain-language Why and metadata tags anyone can check for themselves.', end: true }
+] },
+{ label: 'Vera in iMessage', title: 'Checking a text in Messages', tag: 'iOS · iMessage app', tagBg: '#ADFF71', tagFg: '#18260C', src: 'assets/ed86bcf03ba8df3be0a8fd07cec84245.jpg', n: 4,
+blurb: 'Karen gets a long, heartfelt message from someone she hasn’t heard from in years. Is it really him?',
+steps: [
+{ i: 0, t: 'Open Vera in Messages', d: 'Vera lives in the iMessage app drawer, so Karen never leaves the conversation.', hint: 'Tap the Text tile', hot: [65.8, 78.6] },
+{ i: 1, t: 'Paste the message', d: 'A big, calm space to drop in the text she wants to check.', hint: 'Tap the box to paste', hot: [50, 83.7] },
+{ i: 2, t: 'Ready to check', d: 'The message is in. One button, written in Vera’s voice.', hint: 'Tap Vera-fy it', hot: [50, 94.3] },
+{ i: 3, t: '86% likely AI-generated', d: 'A bright verdict card appears right under the conversation, with a way to learn more.', end: true }
+] },
+{ label: 'Vera for voicemail', title: 'Checking a suspicious voicemail', tag: 'iOS · Control Center', tagBg: '#E08AD1', tagFg: '#2A1027', src: 'assets/a3fb1857c68ca7b305946a94ba574081.jpg', n: 6,
+blurb: 'A famous voice leaves Karen a voicemail asking for money. Voice clones make scams like this convincing.',
+steps: [
+{ i: 0, t: 'An ordinary afternoon', d: 'Karen is using Vera when her phone rings.', auto: 1800 },
+{ i: 1, t: 'An unknown caller', d: 'A number she doesn’t recognize. She lets it go to voicemail.', hint: 'Decline the call', hot: [74.5, 6.4] },
+{ i: 2, t: 'The voicemail', d: 'The transcript shows a familiar voice saying his campaign is low on funds and asking for one easy payment.', hint: 'Swipe down to open Control Center', hot: [86, 4] },
+{ i: 3, t: 'Vera in Control Center', d: 'Vera sits next to the flashlight and timer, one swipe away from any screen.', hint: 'Tap the Vera button', hot: [18, 66] },
+{ i: 4, t: 'Vera-fying the voicemail', d: 'The orb appears over the voicemail while Vera listens.', auto: 2600 },
+{ i: 5, t: 'Flagged as likely AI', d: 'A banner warns her the voice is likely AI-generated, before she ever calls back.', end: true }
+] }
+];
+}
+renderVals() {
+var F = this.flows(), self = this;
+var fi = this.state.flow, si = this.state.step;
+var f = F[fi], s = f.steps[si], n = f.n;
+var tabs = F.map(function (x, k) {
+var on = k === fi;
+return { label: x.label, selected: on ? 'true' : 'false',
+style: 'font-family:inherit;font-weight:600;font-size:16px;border-radius:999px;padding:12px 22px;cursor:pointer;' + (on ? 'border:0;background:' + x.tagBg + ';color:' + x.tagFg : 'border:1.5px solid rgba(255,255,255,0.35);background:transparent;color:#FFFFFF'),
+pick: function () { self.go(k, 0); } };
+});
+var dots = f.steps.map(function (x, j) {
+return { style: 'display:block;height:6px;border-radius:3px;flex:1 1 0;transition:background .3s;background:' + (j <= si ? f.tagBg : 'rgba(255,255,255,0.22)') };
+});
+var hot = s.hot || [50, 50];
+return Object.assign(this.desk(), {
+tabs: tabs, dots: dots,
+title: f.title, tag: f.tag, blurb: f.blurb, src: f.src,
+alt: f.label + ', step ' + (si + 1) + ': ' + s.t,
+tagStyle: 'align-self:flex-start;font-weight:700;font-size:14px;letter-spacing:.04em;border-radius:999px;padding:5px 14px;background:' + f.tagBg + ';color:' + f.tagFg,
+imgStyle: 'display:block;max-width:none;height:auto;width:' + (n * 100) + '%;transform:translateX(-' + (s.i * 100 / n).toFixed(4) + '%);transition:transform .45s cubic-bezier(.4,0,.2,1)',
+hotStyle: 'position:absolute;left:' + hot[0] + '%;top:' + hot[1] + '%;width:48px;height:48px;margin:-24px 0 0 -24px;border-radius:50%;border:3px solid #FFFFFF;background:rgba(173,255,113,0.45);box-shadow:0 0 0 4px rgba(21,21,34,0.35);cursor:pointer;padding:0',
+showHot: !!s.hot, isAuto: !!s.auto, isEnd: !!s.end, hint: s.hint || '',
+stepNum: si + 1, stepCount: f.steps.length, stepTitle: s.t, stepDesc: s.d,
+hasNextFlow: fi < F.length - 1, nextFlowLabel: fi < F.length - 1 ? F[fi + 1].label : '',
+advance: function () { self.go(fi, si + 1); },
+skip: function () { self.go(fi, si + 1); },
+back: function () { self.go(fi, si - 1); },
+restart: function () { self.go(fi, 0); },
+nextFlow: function () { self.go(fi + 1, 0); }
+});
+}
+}
+</script>
+<script src="../../assets/dc-lite.js"></script>
+
+<a class="cg-back" href="../../index.html" aria-label="Back to Christine's Garden"><span aria-hidden="true">&larr;</span> Christine&rsquo;s Garden</a>
+<style>
+.cg-back{position:fixed;left:14px;bottom:14px;z-index:2147483000;display:inline-flex;align-items:center;gap:8px;
+  padding:10px 16px;border-radius:999px;background:#2F4A2C;color:#F6EFDC !important;text-decoration:none !important;
+  font:600 14px/1 'Karla',system-ui,-apple-system,'Segoe UI',sans-serif;letter-spacing:.01em;
+  box-shadow:0 6px 18px rgba(20,24,18,.28);transition:background .2s,transform .2s}
+.cg-back:hover,.cg-back:focus-visible{background:#C8402A;transform:translateY(-2px)}
+@media print{.cg-back{display:none}}
+</style>
+
+</body>
+</html>
