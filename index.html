@@ -97,6 +97,7 @@ nav.top a.nl i{width:10px;height:10px;border-radius:50% 50% 50% 10%;display:bloc
 @keyframes shake{0%,100%{rotate:0deg}20%{rotate:10deg}45%{rotate:-8deg}70%{rotate:5deg}85%{rotate:-2deg}}
 .tag{margin-top:2px;white-space:nowrap;font-family:var(--hand);font-size:clamp(12px,1.3vw,17px);line-height:1;color:var(--label,var(--ink));transition:opacity .2s;rotate:-3deg}
 .fruit.picked .tag{opacity:0}
+.tree[data-tree="mango"] .tag{text-shadow:0 0 2px #62A83C,0 0 4px #62A83C,0 0 6px #62A83C,0 0 9px #62A83C}
 .fruit.picked{z-index:5}
 .fruit.regrow svg{animation:grow .8s cubic-bezier(.3,1.5,.5,1)}
 @keyframes grow{from{scale:0}}
@@ -504,7 +505,7 @@ const KINDS={
   lemon:{name:'Lemon',plu:'4053',color:'#E9C531',fx:'fx-lemon',cut:'cut-lemon',w:10,juice:['#F2D33A','#FFF0A0','#E2B826']},
 };
 const TREES={
-  mango:{spots:[[20,30],[38,14],[60,12],[79,27],[50,42]],items:[
+  mango:{spots:[],items:[
     {short:'Green Biz Spotlights',link:'projects/storefront-reels/index.html',linkLabel:'Watch the Storefront Reels',kicker:'Campaign · Video',title:'Green Business Spotlights',sub:'Bethesda Green × Montgomery County · Summer 2025',meta:['Producer','10 partners','Short-form video'],
      sections:[['The brief','Bethesda Green needed short-form video campaigns to spotlight 10 Montgomery County-certified Green Businesses on social.'],
        ['What I did',['Moved each project from brief and storyboard through shot lists, edits and on-time delivery','Coordinated 10+ on-site shoots and interviews: scheduling, logistics and day-of communication','Aligned each campaign’s messaging with the partner’s brand and the county’s visual standards, working with the county’s Head of Social Media']],
@@ -576,7 +577,10 @@ function spiral(x,y,s,dir){let d=`M${x} ${y}`;for(let i=1;i<=22;i++){const a=i*.
 /* ---------------- Plate I: mango tree ---------------- */
 function mangoTree(){
   const r=rng(17);
-  const vines=[[300,470,280,380,190,330,120,250],[300,470,320,360,420,330,500,230],[300,470,290,330,250,220,210,110],[300,470,320,330,360,200,390,90],[300,470,300,400,180,420,90,380],[300,470,330,420,450,430,520,360]];
+  // left/right vines are mirror images so the mangoes hang symmetrically; the last vine runs up the middle
+  const vines=[[300,470,280,380,190,330,120,250],[300,470,320,380,410,330,480,250],[300,470,290,330,250,220,210,110],[300,470,310,330,350,220,390,110],[300,470,300,400,180,420,90,380],[300,470,300,400,420,420,510,380],[300,470,297,360,304,200,300,62]];
+  // hang each mango from a point on its vine so the stem touches the branch
+  TREES.mango.spots=[[0,.86],[2,.84],[6,.9],[3,.84],[1,.86]].map(([v,t])=>{const[x,y]=bez(vines[v],t);return[x/6,(y-1)/6.4]});
   let leaves='',vinesSvg='';
   vines.forEach(p=>{vinesSvg+=`<path d="${bpath(p)}" stroke="#163A24" stroke-width="7" fill="none" stroke-linecap="round"/>`;leaves+=leavesAlong(p,r,{from:.25,step:.09,L:[24,38],cols:['#163A24','#1F4A2C']})});
   return `<svg class="art" viewBox="0 0 600 640" aria-hidden="true">
